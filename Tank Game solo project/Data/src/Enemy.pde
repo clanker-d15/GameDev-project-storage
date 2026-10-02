@@ -1,6 +1,8 @@
 class Enemy {
   int x, y, health, hitPoints, speed, angle, turretAngle, reload, shootDelay;
-  PImage e1;
+  PImage e1Base, e1Turret;
+  color c;
+
 
   // Contructor
   Enemy(int x, int y) {
@@ -8,12 +10,14 @@ class Enemy {
     this.y = y;
     health = 850;
     hitPoints = 60;
-    e1 = loadImage("");
+    c = (50);
+    e1Base = loadImage("TankBase.png");
+    e1Turret = loadImage("TankTurret.png");
   }
 
   // Member Methods
   void display() {
-    if (health > 50) {
+    if (health > 0) {
     } else {
     }
   }
@@ -26,6 +30,6 @@ class Enemy {
     y = tempY;
   }
 
-  //boolean hit() {
+  //boolean isHit() {
   //}
 }
