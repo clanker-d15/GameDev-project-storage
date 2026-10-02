@@ -1,6 +1,6 @@
 class Tank {
   // Member Variables
-  int x, y, health, speed, reload, shootDelay, healDelay, ammo, reloadTime;
+  int x, y, health, speed, reload, healDelay, ammo, reloadTime;
 
   float angle, turretAngle, rotationSpeed;
 
@@ -17,13 +17,12 @@ class Tank {
     x = 30;
     y = 45;
     health = 1350;
-    shootDelay = 8;
     reload = 110;
     rotationSpeed = 0.03;
-    speed = 2;
-    angle = 0;
-    healDelay = 10;
-    turretAngle = 0;
+    speed = 3;
+    angle = HALF_PI;
+    healDelay = 350;
+    turretAngle = HALF_PI;
     ammo = 12;
     reloadTime = 250;
 
@@ -40,12 +39,12 @@ class Tank {
 
     pushMatrix();
     translate(x, y);
-    rotate(angle);
+    rotate(angle - HALF_PI);
     image(base, 0, 0);
 
     pushMatrix();
 
-    rotate(turretAngle - angle);
+    rotate(turretAngle - angle + HALF_PI);
 
     float pivotOffsetX = -2;
     float pivotOffsety = 7;
@@ -77,8 +76,10 @@ class Tank {
 
       while (diff < -PI) diff += TWO_PI;
       while (diff > PI) diff -= TWO_PI;
-      turretAngle += diff * 0.5;
+      turretAngle += diff * 0.4;
 
+      x = constrain(x, 0, width);
+      y = constrain(y, 0, height);
 
       if (ammo == 0) {
         reloadTime = reloadTime - 1;
@@ -92,29 +93,6 @@ class Tank {
     }
   }
 
-  void move() {
-    // Movement input is only processed when PLAYING
-    if (key == 'w') player.movingForward = true;
-    if (key == 's') player.movingBackward = true;
-    if (key == 'a') player.turningLeft = true;
-    if (key == 'd') player.turningRight = true;
-    if (keyCode == 38) player.movingForward = true;
-    if (keyCode == 40) player.movingBackward = true;
-    if (keyCode == 37) player.turningLeft = true;
-    if (keyCode == 39) player.turningRight = true;
-  }
-
-  void stationary() {
-    if (key == 'w') player.movingForward = false;
-    if (key == 's') player.movingBackward = false;
-    if (key == 'a') player.turningLeft = false;
-    if (key == 'd') player.turningRight = false;
-    if (keyCode == 38) player.movingForward = false;
-    if (keyCode == 40) player.movingBackward = false;
-    if (keyCode == 37) player.turningLeft = false;
-    if (keyCode == 39) player.turningRight = false;
-  }
-
   void shoot() {
     if (mouseButton == LEFT) {
       if (ammo > 0) {
@@ -125,9 +103,5 @@ class Tank {
         println("Player Reloading... | " + reloadTime + " until reloaded");
       }
     }
-    
-    
   }
-  
-  
 }
