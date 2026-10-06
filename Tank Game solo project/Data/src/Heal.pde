@@ -1,5 +1,5 @@
 class Heal {
-  int x, y, w, h;
+  int x, y, w, h, healAmount;
   color c;
 
   void setup() {
@@ -8,5 +8,6 @@ class Heal {
     w = 25;
     h = 25;
     c = (255);
+    healAmount = 450;
   }
 }
