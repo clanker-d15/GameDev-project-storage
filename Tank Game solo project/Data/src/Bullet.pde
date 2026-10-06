@@ -2,10 +2,10 @@ class Bullet {
   float StartX, StartY, StartAngle, w, h, speed, damage;
 
   Bullet(float StartX, float StartY, float StartAngle) {
-    this.x = x;
-    this.y = y;
-    w = 6;
-    h = 15;
+    this.x = StartX;
+    this.y = StartY;
+    w = 4;
+    h = 14;
     speed = 8;
     damage = 30;
     angle = StartAngle;
