@@ -1,6 +1,6 @@
 class HeavyEnemyTank {
   int x, y, health, hitPoints, speed, angle, turretAngle, reload, shootDelay;
-  PImage Base, Turret;
+  PImage HeavyEnemyBase, HeavyEnemyTurret;
   color c;
 
 
@@ -8,11 +8,11 @@ class HeavyEnemyTank {
   HeavyEnemyTank(int x, int y) {
     this.x = x;
     this.y = y;
-    health = 850;
+    health = 900;
     hitPoints = 60;
     c = (50);
-    Base = loadImage("TankBase.png");
-    Turret = loadImage("TankTurret.png");
+    HeavyEnemyBase = loadImage("HeavyEnemyBase.png");
+    HeavyEnemyTurret = loadImage("HeavyEnemyTurret.png");
   }
 
   // Member Methods
