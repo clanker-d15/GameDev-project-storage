@@ -1,6 +1,7 @@
 // Franklin Roth | 17 Sept 2026 | TankGame
 Tank player;
-Enemy enemy;
+HeavyEnemy H_enemy;
+//LightEnemy L_enemy;
 Heal healthPack;
 
 import processing.sound.*;
@@ -10,20 +11,21 @@ PImage mouse, reloadMouse;
 int tankOffScreen, ax, ay;
 boolean play;
 
-ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+ArrayList<HeavyEnemy> H_enemies = new ArrayList<HeavyEnemy>();
+//ArrayList<LightEnemy> L_enemies = new ArrayList<LightEnemy>();
 ArrayList<Heal> healPack = new ArrayList<Heal>();
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
-//ArrayList<Wall> walls = new ArrayList<Wall>();
 
 
 void setup() {
-  size(800, 800);
+  size(700, 900);
   player = new Tank();
-  enemy = new Enemy(0, 0);
+  H_enemy = new HeavyEnemy(0, 0);
   healthPack = new Heal();
   mouse = loadImage("crossHair.png");
   reloadMouse = loadImage("ReloadCrosshair.png");
-  enemies.add(new Enemy(int(random(width)), -60));
+  H_enemies.add(new HeavyEnemy(int(random(width)), -60));
+  //L_enemies.add(new LightEnemy(int(random(width)), -60));
   noCursor();
   play = false;
 
@@ -37,7 +39,7 @@ void draw() {
   if (play == false) {
     startScreen();
   }
-  
+
   if (play == true) {
     background(255);
 
@@ -45,9 +47,6 @@ void draw() {
 
     player.update();
     player.display();
-
-    enemy.update();
-    enemy.display();
 
     infoPanel();
 
@@ -63,42 +62,45 @@ void draw() {
 
     textSize(15);
     if (player.ammo > 0) {
-      if (mouseX > 774) {
+
+      // Offscreen cursor horizontal and regular
+      if (mouseX > 674) {
         fill(190, 200);
-        rect(mouseX - 32, mouseY + 3, 22, 19, 25);
+        rect(mouseX - 32, mouseY + 8, 22, 19, 25);
         fill(0);
-        text(player.ammo, mouseX - 28, mouseY + 18);
+        text(player.ammo, mouseX - 28, mouseY + 23);
       } else {
         fill(190, 200);
-        rect(mouseX + 11, mouseY + 3, 22, 19, 25);
+        rect(mouseX + 11, mouseY + 8, 22, 19, 25);
         fill(0);
-        text(player.ammo, mouseX + 15, mouseY + 18);
+        text(player.ammo, mouseX + 15, mouseY + 23);
       }
 
-      if (mouseY > 784) {
+      // Offscreen cursor vertical
+      if (mouseY > 884) {
         fill(190, 200);
         rect(mouseX + 11, mouseY - 30, 22, 19, 25);
         fill(0);
         text(player.ammo, mouseX + 15, mouseY - 14);
       }
-
-      if (mouseY > 780 && mouseX > 770) {
-        fill(190, 200);
-        rect(mouseX - 31, mouseY - 30, 22, 19, 25);
-        fill(0);
-        text(player.ammo, mouseX - 25, mouseY - 14);
-      }
     } else {
-      if (mouseX > 760) {
+      if (mouseX > 660) {
         fill(190, 200);
-        rect(mouseX - 99, mouseY + 3, 82, 19, 25);
+        rect(mouseX - 94, mouseY + 9, 82, 19, 25);
         fill(0);
-        text("Reloading...", mouseX - 95, mouseY + 18);
+        text("Reloading...", mouseX - 90, mouseY + 23);
       } else {
         fill(190, 200);
-        rect(mouseX + 11, mouseY + 3, 82, 19, 25);
+        rect(mouseX + 11, mouseY + 9, 82, 19, 25);
         fill(0);
-        text("Reloading...", mouseX + 15, mouseY + 18);
+        text("Reloading...", mouseX + 14, mouseY + 23);
+      }
+
+      if (mouseY > 884) {
+        fill(190, 200);
+        rect(mouseX + 11, mouseY - 30, 82, 23, 25);
+        fill(0);
+        text("Reloading...", mouseX + 14, mouseY - 14);
       }
     }
   }
@@ -120,13 +122,12 @@ void mousePressed() {
       player.shoot();
       laser1.play();
     }
-    
-    // Note: remove this function after your done with the game
+
+    // Note: Change this function after your done
     if (mouseButton == RIGHT) {
       player.health = 0;
       gameOver();
     }
-    
   }
 }
 
@@ -138,12 +139,12 @@ void keyPressed() {
   if (play == true) {
     if (key == 'w') player.movingForward = true;
     if (key == 's') player.movingBackward = true;
-    if (key == 'a') player.turningLeft = true;
-    if (key == 'd') player.turningRight = true;
+    if (key == 'a') player.movingLeft = true;
+    if (key == 'd') player.movingRight = true;
     if (keyCode == 38) player.movingForward = true;
     if (keyCode == 40) player.movingBackward = true;
-    if (keyCode == 37) player.turningLeft = true;
-    if (keyCode == 39) player.turningRight = true;
+    if (keyCode == 37) player.movingLeft = true;
+    if (keyCode == 39) player.movingRight = true;
   }
 }
 
@@ -151,18 +152,21 @@ void keyReleased() {
   if (play == true) {
     if (key == 'w') player.movingForward = false;
     if (key == 's') player.movingBackward = false;
-    if (key == 'a') player.turningLeft = false;
-    if (key == 'd') player.turningRight = false;
+    if (key == 'a') player.movingLeft = false;
+    if (key == 'd') player.movingRight = false;
     if (keyCode == 38) player.movingForward = false;
     if (keyCode == 40) player.movingBackward = false;
-    if (keyCode == 37) player.turningLeft = false;
-    if (keyCode == 39) player.turningRight = false;
+    if (keyCode == 37) player.movingLeft = false;
+    if (keyCode == 39) player.movingRight = false;
   }
 }
 
 void infoPanel() {
   fill(127, 127);
-  rect(0, 729, 137, 70, 13);
+  rect(0, 829, 137, 70, 13);
+  stroke(0);
+  strokeWeight(2);
+  textSize(25);
 
   if (player.health > 750) {
     fill(255);
@@ -174,14 +178,25 @@ void infoPanel() {
     fill(#D82A2A);
   }
 
-  stroke(0);
-  strokeWeight(2);
-  textSize(25);
-  text("Health: " + player.health, 3, 750);
+  text("Health: " + player.health, 3, 850);
+
+
   if (player.ammo == 0) {
-    text("Reloading...", 3, 770);
+    fill(255);
+    text("Reloading...", 3, 870);
   } else {
-    text("Ammo: " + player.ammo, 3, 770);
+    if (player.ammo > 8) {
+      fill(255);
+      text("Ammo: " + player.ammo, 3, 870);
+    }
+    if (player.ammo < 9) {
+      fill(#FAE0C0);
+      text("Ammo: " + player.ammo, 3, 870);
+    }
+    if (player.ammo < 4) {
+      fill(#FAC0C0);
+      text("Ammo: " + player.ammo, 3, 870);
+    }
   }
 }
 
@@ -189,17 +204,19 @@ void infoPanel() {
 void startScreen() {
   background(0);
 
-  // Add start screen graphic
+  // Add more to start screen
   fill(255);
   textMode(CENTER);
   textSize(50);
-  text("Press any key to begin", 150, 400);
+  text("Defend the base", width/5, height/2);
+  textSize(20);
+  text("Press any key to begin", width/2.5, height/1.9);
 }
 
 void gameOver() {
   if (player.health < 1) {
-    fill(0,190);
-    rect(0,0,1000,1000);
+    fill(0, 190);
+    rect(0, 0, 1000, 1000);
     // Add game over screen graphic
     fill(255);
     textMode(CENTER);
