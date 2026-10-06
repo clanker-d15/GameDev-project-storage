@@ -1,6 +1,6 @@
 class HeavyEnemyTank {
   int x, y, health, hitPoints, speed, angle, turretAngle, reload, shootDelay;
-  PImage e1Base, e1Turret;
+  PImage Base, Turret;
   color c;
 
 
