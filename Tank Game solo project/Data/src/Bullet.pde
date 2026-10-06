@@ -1,14 +1,14 @@
 class Bullet {
-  float x, y, w, h, speed, damage, angle;
+  float StartX, StartY, StartAngle, w, h, speed, damage;
 
-  Bullet(int x, int y) {
+  Bullet(float StartX, float StartY, float StartAngle) {
     this.x = x;
     this.y = y;
     w = 6;
     h = 15;
-    speed = 7;
+    speed = 8;
     damage = 30;
-    angle = player.angle;
+    angle = StartAngle;
   }
 
   void update() {
