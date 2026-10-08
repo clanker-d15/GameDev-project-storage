@@ -1,6 +1,6 @@
 class Tank {
   // Member Variables
-  int x, y, health, speed, reload, healDelay, ammo, reloadTime;
+  int x, y, health, speed, reload, healDelay, ammo, reloadTime, damage;
 
   float angle, turretAngle, rotationSpeed;
 
@@ -25,6 +25,7 @@ class Tank {
     turretAngle = HALF_PI;
     ammo = 12;
     reloadTime = 200;
+    damage = 40;
 
 
     base = loadImage("TankBase.png");
@@ -82,17 +83,21 @@ class Tank {
 
       if (movingForward == true && movingRight == true) {
         angle = -HALF_PI/2;
+        speed = speed/2;
       }
       if (movingForward == true && movingLeft == true) {
         // Found this absurd angle that worked by experimenting for like 20 minutes
         angle = -10200;
+        speed = speed/2;
       }
       if (movingBackward == true && movingRight == true) {
         angle = HALF_PI/2;
+        speed = speed/2;
       }
       if (movingBackward == true && movingLeft == true) {
         // Found this angle the same way
         angle = 10200;
+        speed = speed/2;
       }
 
       // Movement debuggers
@@ -145,5 +150,9 @@ class Tank {
         println("Player Reloading... | " + reloadTime + " until reloaded");
       }
     }
+  }
+
+  boolean isHit() {
+    return true;
   }
 }
