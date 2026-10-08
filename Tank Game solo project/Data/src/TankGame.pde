@@ -217,8 +217,8 @@ void gameOver() {
   if (player.health < 1) {
     fill(0, 190);
     rect(0, 0, 1000, 1000);
-    // Add game over screen graphic
     fill(255);
+
     textMode(CENTER);
     textSize(25);
     text("Game Over! Your tank was destroyed.", 200, 400);
