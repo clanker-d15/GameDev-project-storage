@@ -1,2 +1,4 @@
 # GameDevSRC
-Storage to code at home if needed
+Storage for code
+
+Can code outside of class if needed
