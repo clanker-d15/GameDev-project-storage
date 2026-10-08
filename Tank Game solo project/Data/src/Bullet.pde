@@ -1,50 +1,42 @@
 class Bullet {
-  float StartX, StartY, StartAngle, w, h, speed, damage;
+  float x, y, w, h, speed, damage, angle;
 
-  Bullet(float StartX, float StartY, float StartAngle) {
-    this.x = StartX;
-    this.y = StartY;
-    w = 4;
-    h = 14;
-    speed = 8;
+  Bullet(float x, float y) {
+    this.x = x;
+    this.y = y;
+    w = 2;
+    h = 17;
+    speed = 15;
     damage = 30;
-    angle = StartAngle;
+    angle = player.turretAngle;
   }
 
   void update() {
-    x += cos(angle) * speed;
-    y += sin(angle) * speed;
+    x += cos(angle + HALF_PI) * speed;
+    y += sin(angle + HALF_PI) * speed;
   }
 
   void display() {
     fill(#F0A327);
+    noStroke();
     rectMode(CENTER);
-    rect(x, y, w, h);
-  }
-
-  void move() {
-    float dx = mouseX - x;
-    float dy = mouseY - y;
-
-    x += cos(angle) * speed;
-    y += sin(angle) * speed;
+    pushMatrix();
+    translate(x, y);
+    rotate(angle + PI);
+    rect(0, 0, w, h);
+    popMatrix();
   }
 
   boolean isOffScreen() {
-    if (x>width+10 || x<width-10 || y>height+10 || y<height-10) {
-      return true;
-    } else {
-      return false;
-    }
+    return (x < -10 || x > width + 10 || y < -10 || y > height + 10);
   }
 
   boolean isHit(Tank t) {
     float d = dist(x, y, t.x, t.y);
-    if (d<40) {
-      player.health = player.health - 30;
+    if (d < 40) {
+      t.health -= damage;
       return true;
-    } else {
-      return false;
     }
+    return false;
   }
 }
