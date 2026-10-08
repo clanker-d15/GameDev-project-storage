@@ -106,14 +106,15 @@ void draw() {
   }
 }
 
-//for (int i = 0; i < bullets.size(); i++) {
-//  Bullet b = bullets.get(i);
-//  b.display();
-//  b.move();
-//  if (b.isOffScreen() == true) {
-//    bullets.remove(b);
-//  }
-//}
+for (int i = bullets.size() - 1; i >= 0; i--) {
+      Bullet b = bullets.get(i);
+      b.move();
+      b.display();
+      
+      if (b.isOffScreen()) {
+        bullets.remove(i);
+      }
+    }
 
 void mousePressed() {
   if (play == true) {
