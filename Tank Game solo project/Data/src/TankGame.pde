@@ -60,68 +60,57 @@ void draw() {
       image(reloadMouse, mouseX, mouseY);
     }
 
+
+    textAlign(CENTER, CENTER);
+    rectMode(CENTER);
     textSize(15);
     if (player.ammo > 0) {
-
-      // Offscreen cursor horizontal and regular
-      if (mouseX > 674) {
+      if (mouseY < 25 || mouseX < 25) {
         fill(190, 200);
-        rect(mouseX - 32, mouseY + 8, 22, 19, 25);
+        rect(mouseX + 23, mouseY + 17, 22, 19, 25);
         fill(0);
-        text(player.ammo, mouseX - 28, mouseY + 23);
+        text(player.ammo, mouseX + 23, mouseY + 15);
       } else {
         fill(190, 200);
-        rect(mouseX + 11, mouseY + 8, 22, 19, 25);
+        rect(mouseX - 23, mouseY - 20, 22, 19, 25);
         fill(0);
-        text(player.ammo, mouseX + 15, mouseY + 23);
-      }
-
-      // Offscreen cursor vertical
-      if (mouseY > 884) {
-        fill(190, 200);
-        rect(mouseX + 11, mouseY - 30, 22, 19, 25);
-        fill(0);
-        text(player.ammo, mouseX + 15, mouseY - 14);
+        text(player.ammo, mouseX - 23, mouseY - 22);
       }
     } else {
-      if (mouseX > 660) {
+      if (mouseY < 25 || mouseX < 70) {
         fill(190, 200);
-        rect(mouseX - 94, mouseY + 9, 82, 19, 25);
+        rect(mouseX + 50, mouseY + 23, 82, 19, 25);
         fill(0);
-        text("Reloading...", mouseX - 90, mouseY + 23);
+        text("Reloading...", mouseX + 50, mouseY + 21);
       } else {
         fill(190, 200);
-        rect(mouseX + 11, mouseY + 9, 82, 19, 25);
+        rect(mouseX - 50, mouseY - 23, 82, 19, 25);
         fill(0);
-        text("Reloading...", mouseX + 14, mouseY + 23);
+        text("Reloading...", mouseX - 50, mouseY - 25);
       }
+    }
+  }
 
-      if (mouseY > 884) {
-        fill(190, 200);
-        rect(mouseX + 11, mouseY - 30, 82, 23, 25);
-        fill(0);
-        text("Reloading...", mouseX + 14, mouseY - 14);
-      }
+
+  for (int i = bullets.size() - 1; i >= 0; i--) {
+    Bullet b = bullets.get(i);
+    b.update();
+    b.display();
+
+    if (b.isOffScreen()) {
+      bullets.remove(i);
     }
   }
 }
 
-for (int i = bullets.size() - 1; i >= 0; i--) {
-      Bullet b = bullets.get(i);
-      b.move();
-      b.display();
-      
-      if (b.isOffScreen()) {
-        bullets.remove(i);
-      }
-    }
-
 void mousePressed() {
   if (play == true) {
     if (mouseButton == LEFT) {
-      bullets.add(new Bullet(player.x, player.y));
-      player.shoot();
-      laser1.play();
+      if (player.ammo > 0) {
+        bullets.add(new Bullet(player.x, player.y));
+        player.shoot();
+        laser1.play();
+      }
     }
 
     // Note: Change this function after your done
@@ -131,6 +120,7 @@ void mousePressed() {
     }
   }
 }
+
 
 void keyPressed() {
   if (play == false) {
@@ -163,11 +153,14 @@ void keyReleased() {
 }
 
 void infoPanel() {
-  fill(127, 127);
-  rect(0, 829, 137, 70, 13);
-  stroke(0);
+  textAlign(CENTER, CENTER);
+  rectMode(CENTER);
+  stroke(10);
   strokeWeight(2);
+  fill(127, 127);
+  rect(73, 860, 137, 70, 13);
   textSize(25);
+
 
   if (player.health > 750) {
     fill(255);
@@ -179,24 +172,24 @@ void infoPanel() {
     fill(#D82A2A);
   }
 
-  text("Health: " + player.health, 3, 850);
+  text("Health: " + player.health, 73, 835);
 
 
   if (player.ammo == 0) {
     fill(255);
-    text("Reloading...", 3, 870);
+    text("Reloading...", 73, 857);
   } else {
     if (player.ammo > 8) {
       fill(255);
-      text("Ammo: " + player.ammo, 3, 870);
+      text("Ammo: " + player.ammo, 65, 857);
     }
     if (player.ammo < 9) {
       fill(#FAE0C0);
-      text("Ammo: " + player.ammo, 3, 870);
+      text("Ammo: " + player.ammo, 65, 857);
     }
     if (player.ammo < 4) {
       fill(#FAC0C0);
-      text("Ammo: " + player.ammo, 3, 870);
+      text("Ammo: " + player.ammo, 65, 857);
     }
   }
 }
@@ -207,7 +200,6 @@ void startScreen() {
 
   // Add more to start screen
   fill(255);
-  textMode(CENTER);
   textSize(50);
   text("Defend the base", width/5, height/2);
   textSize(20);
@@ -216,11 +208,11 @@ void startScreen() {
 
 void gameOver() {
   if (player.health < 1) {
+    textAlign(CENTER, CENTER);
     fill(0, 190);
     rect(0, 0, 1000, 1000);
     fill(255);
 
-    textMode(CENTER);
     textSize(25);
     text("Game Over! Your tank was destroyed.", 200, 400);
     text("Rerun the game to restart", 255, 430);
