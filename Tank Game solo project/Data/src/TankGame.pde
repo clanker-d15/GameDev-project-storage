@@ -1,7 +1,7 @@
 // Franklin Roth | 17 Sept 2026 | TankGame
 Tank player;
 HeavyEnemy H_enemy;
-//LightEnemy L_enemy;
+LightEnemy L_enemy;
 Heal healthPack;
 
 import processing.sound.*;
@@ -12,7 +12,7 @@ int tankOffScreen, ax, ay;
 boolean play;
 
 ArrayList<HeavyEnemy> H_enemies = new ArrayList<HeavyEnemy>();
-//ArrayList<LightEnemy> L_enemies = new ArrayList<LightEnemy>();
+ArrayList<LightEnemy> L_enemies = new ArrayList<LightEnemy>();
 ArrayList<Heal> healPack = new ArrayList<Heal>();
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 
@@ -25,7 +25,7 @@ void setup() {
   mouse = loadImage("crossHair.png");
   reloadMouse = loadImage("ReloadCrosshair.png");
   H_enemies.add(new HeavyEnemy(int(random(width)), -60));
-  //L_enemies.add(new LightEnemy(int(random(width)), -60));
+  L_enemies.add(new LightEnemy(int(random(width)), -60));
   noCursor();
   play = false;
 
