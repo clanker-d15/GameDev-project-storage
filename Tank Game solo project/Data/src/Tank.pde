@@ -1,6 +1,6 @@
 class Tank {
   // Member Variables
-  int x, y, health, speed, reload, healDelay, ammo, BulletReloadTime, RocketReloadTime, damage, rocketAmmo;
+  int x, y, health, speed, reload, healDelay, ammo, BulletReloadTime, RocketReloadTime, rocketAmmo;
 
   float angle, turretAngle, rotationSpeed;
 
@@ -25,16 +25,13 @@ class Tank {
     turretAngle = HALF_PI;
     ammo = 12;
     BulletReloadTime = 200;
-    RocketReloadTime = 200;
-    damage = 40;
-    rocketAmmo = 1;
+    RocketReloadTime = 550;
+    rocketAmmo = 2;
 
 
     base = loadImage("TankBase.png");
     turret = loadImage("TankTurret.png");
   }
-
-  // Member Methods
 
   void display() {
     imageMode(CENTER);
@@ -65,7 +62,7 @@ class Tank {
   void update() {
     if (health > 0) {
 
-      // Movement and tank direction (Used some older code from former project as a base)
+      // Movement and tank direction (Used old code as base)
       if (movingForward) {
         y = y - speed;
         angle = -HALF_PI;
@@ -88,7 +85,7 @@ class Tank {
         speed = speed/2;
       }
       if (movingForward == true && movingLeft == true) {
-        // Found this absurd angle that worked by experimenting for like 20 minutes
+        // Found this absurd angle that worked by experimenting for 20 minutes
         angle = -10200;
         speed = speed/2;
       }
@@ -145,32 +142,32 @@ class Tank {
       }
 
       if (RocketReloadTime < 0) {
-        RocketReloadTime = 200;
+        RocketReloadTime = 350;
         rocketAmmo = 1;
-        println("Reloaded | 1 Rocket left");
+        println("Reloaded | " + rocketAmmo + " Rockets Left");
       }
     }
   }
 
   void shoot() {
     if (mouseButton == LEFT) {
-      if (ammo > 0) {
+      if (ammo > 1) {
         ammo = ammo - 1;
-        println("Player Shot | Ammo left: " + ammo);
-      } else if (ammo == 0 || reloadTime == 0 || reloadTime < 0) {
-        ammo = 0;
-        println("Player Reloading Bullets...);
-      }
-    } 
-   if (mouseButton == RIGHT) {
-      if (rocketAmmo > 0) {
-        rocketAmmo = 0;
+        println("Player Shot Bullet | Ammo left: " + ammo);
       } else {
-        println("Player Reloading Rockets...");
-        
+        println("No Bullets left | Player Reloading Bullets...");
+        ammo = 0;
       }
-
-   }
+    }
+    if (mouseButton == RIGHT) {
+      if (rocketAmmo > 1) {
+        println("Player Rocket Shot | Rockets left: 1");
+        rocketAmmo = rocketAmmo - 1;
+      } else {
+        println("No Rockets left | Player Reloading Rockets...");
+        rocketAmmo = 0;
+      }
+    }
   }
 
   boolean isHit() {
