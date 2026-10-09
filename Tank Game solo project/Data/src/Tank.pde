@@ -1,6 +1,6 @@
 class Tank {
   // Member Variables
-  int x, y, health, speed, reload, healDelay, ammo, reloadTime, damage;
+  int x, y, health, speed, reload, healDelay, ammo, BulletReloadTime, RocketReloadTime, damage, rocketAmmo;
 
   float angle, turretAngle, rotationSpeed;
 
@@ -24,8 +24,10 @@ class Tank {
     healDelay = 350;
     turretAngle = HALF_PI;
     ammo = 12;
-    reloadTime = 200;
+    BulletReloadTime = 200;
+    RocketReloadTime = 200;
     damage = 40;
+    rocketAmmo = 1;
 
 
     base = loadImage("TankBase.png");
@@ -129,13 +131,23 @@ class Tank {
 
       // reload
       if (ammo == 0) {
-        reloadTime = reloadTime - 1;
+        BulletReloadTime = BulletReloadTime - 1;
       }
 
-      if (reloadTime < 0) {
-        reloadTime = 200;
+      if (rocketAmmo == 0) {
+        RocketReloadTime = RocketReloadTime - 1;
+      }
+
+      if (BulletReloadTime < 0) {
+        BulletReloadTime = 200;
         ammo = 12;
         println("Reloaded | Ammo left: " + ammo);
+      }
+
+      if (RocketReloadTime < 0) {
+        RocketReloadTime = 200;
+        rocketAmmo = 1;
+        println("Reloaded | 1 Rocket left");
       }
     }
   }
@@ -147,9 +159,18 @@ class Tank {
         println("Player Shot | Ammo left: " + ammo);
       } else if (ammo == 0 || reloadTime == 0 || reloadTime < 0) {
         ammo = 0;
-        println("Player Reloading... | " + reloadTime + " until reloaded");
+        println("Player Reloading Bullets...);
       }
-    }
+    } 
+   if (mouseButton == RIGHT) {
+      if (rocketAmmo > 0) {
+        rocketAmmo = 0;
+      } else {
+        println("Player Reloading Rockets...");
+        
+      }
+
+   }
   }
 
   boolean isHit() {
