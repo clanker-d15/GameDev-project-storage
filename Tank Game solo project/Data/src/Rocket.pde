@@ -1,14 +1,14 @@
 class Rocket {
-  float x, y, w, h, speed, damage, angle;
+  float x, y, w, h, speed, angle, rocketDamage;
 
   Rocket(float x, float y) {
     this.x = x;
     this.y = y;
-    w = 8;
-    h = 14;
-    speed = 10;
-    damage = 250;
+    w = 5;
+    h = 17;
+    speed = 16;
     angle = player.turretAngle;
+    rocketDamage = 250;
   }
 
   void update() {
@@ -34,10 +34,9 @@ class Rocket {
   boolean isHit(Tank t) {
     float d = dist(x, y, t.x, t.y);
     if (d < 40) {
-      t.health -= damage;
+      t.health -= rocketDamage;
       return true;
     }
     return false;
   }
-
 }
