@@ -6,7 +6,7 @@ class Bullet {
     this.y = y;
     w = 2;
     h = 17;
-    speed = 15;
+    speed = 18;
     damage = 30;
     angle = player.turretAngle;
   }
