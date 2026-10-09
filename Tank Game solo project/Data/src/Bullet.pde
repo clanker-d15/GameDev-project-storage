@@ -1,14 +1,14 @@
 class Bullet {
-  float x, y, w, h, speed, damage, angle;
+  float x, y, w, h, speed, angle, bulletDamage;
 
   Bullet(float x, float y) {
     this.x = x;
     this.y = y;
     w = 2;
-    h = 17;
-    speed = 18;
-    damage = 30;
+    h = 21;
+    speed = 24;
     angle = player.turretAngle;
+    bulletDamage = 30;
   }
 
   void update() {
@@ -34,7 +34,7 @@ class Bullet {
   boolean isHit(Tank t) {
     float d = dist(x, y, t.x, t.y);
     if (d < 40) {
-      t.health -= damage;
+      t.health -= bulletDamage;
       return true;
     }
     return false;
