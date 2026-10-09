@@ -143,7 +143,7 @@ class Tank {
 
       if (RocketReloadTime < 0) {
         RocketReloadTime = 350;
-        rocketAmmo = 1;
+        rocketAmmo = 2;
         println("Reloaded | " + rocketAmmo + " Rockets Left");
       }
     }
