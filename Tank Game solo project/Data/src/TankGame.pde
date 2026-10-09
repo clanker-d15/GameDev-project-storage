@@ -124,18 +124,17 @@ void mousePressed() {
       }
     }
 
-    // Note: Change this function 
+    // Note: Change this function
     if (play == true) {
-    if (mouseButton == RIGHT) {
-      if (player.rocketAmmo > 0) {
-        rockets.add(new Rocket(player.x, player.y));
-        player.shoot();
-
+      if (mouseButton == RIGHT) {
+        if (player.rocketAmmo > 0) {
+          rockets.add(new Rocket(player.x, player.y));
+          player.shoot();
+        }
       }
     }
   }
 }
-
 
 void keyPressed() {
   if (play == false) {
@@ -173,7 +172,7 @@ void infoPanel() {
   stroke(10);
   strokeWeight(2);
   fill(127, 127);
-  rect(73, 860, 137, 70, 13);
+  rect(73, 855, 137, 75, 13);
   textSize(25);
 
 
@@ -187,24 +186,34 @@ void infoPanel() {
     fill(#D82A2A);
   }
 
-  text("Health: " + player.health, 73, 835);
+  text("Health: " + player.health, 73, 827);
 
 
   if (player.ammo == 0) {
     fill(255);
-    text("Reloading...", 73, 857);
+    text("Reloading...", 73, 847);
   } else {
     if (player.ammo > 8) {
       fill(255);
-      text("Ammo: " + player.ammo, 65, 857);
+      text("Ammo: " + player.ammo, 65, 847);
     }
     if (player.ammo < 9) {
       fill(#FAE0C0);
-      text("Ammo: " + player.ammo, 65, 857);
+      text("Ammo: " + player.ammo, 65, 847);
     }
     if (player.ammo < 4) {
       fill(#FAC0C0);
-      text("Ammo: " + player.ammo, 65, 857);
+      text("Ammo: " + player.ammo, 65, 847);
+    }
+  }
+
+  if (player.rocketAmmo == 0) {
+    fill(255);
+    text("Reloading...", 73, 868);
+  } else {
+    if (player.rocketAmmo > 0) {
+      fill(255);
+      text("Rockets: " + player.rocketAmmo, 65, 868);
     }
   }
 }
