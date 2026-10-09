@@ -125,9 +125,13 @@ void mousePressed() {
     }
 
     // Note: Change this function 
+    if (play == true) {
     if (mouseButton == RIGHT) {
-      player.health = 0;
-      gameOver();
+      if (player.rocketAmmo > 0) {
+        rockets.add(new Rocket(player.x, player.y));
+        player.shoot();
+
+      }
     }
   }
 }
