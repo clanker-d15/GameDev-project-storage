@@ -55,13 +55,14 @@ void draw() {
       gameOver();
     }
 
+    // Crosshair
     if (player.ammo > 0) {
       image(mouse, mouseX, mouseY);
     } else {
       image(reloadMouse, mouseX, mouseY);
     }
 
-
+    // Ammo counter next to crosshair
     textAlign(CENTER, CENTER);
     rectMode(CENTER);
     textSize(15);
@@ -92,7 +93,7 @@ void draw() {
     }
   }
 
-
+// Bullet and Rocket activators
   for (int i = bullets.size() - 1; i >= 0; i--) {
     Bullet b = bullets.get(i);
     b.update();
@@ -124,7 +125,6 @@ void mousePressed() {
       }
     }
 
-    // Note: Change this function
     if (play == true) {
       if (mouseButton == RIGHT) {
         if (player.rocketAmmo > 0) {
