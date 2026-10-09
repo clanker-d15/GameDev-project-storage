@@ -124,7 +124,7 @@ void mousePressed() {
       }
     }
 
-    // Note: Change this function after your done
+    // Note: Change this function 
     if (mouseButton == RIGHT) {
       player.health = 0;
       gameOver();
