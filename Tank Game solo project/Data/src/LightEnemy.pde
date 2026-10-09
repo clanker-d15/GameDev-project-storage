@@ -7,7 +7,7 @@ class LightEnemy {
     this.x = x;
     this.y = y;
     health = 325;
-    damage = 10;
+    damage = 30;
   }
 
   // Member Methods
@@ -25,7 +25,7 @@ class LightEnemy {
     y = tempY;
   }
 
-  //boolean isHit() {
-  //}
-
+  boolean isHit() {
+    return true;
+  }
 }
