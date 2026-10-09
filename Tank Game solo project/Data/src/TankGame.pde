@@ -15,7 +15,7 @@ ArrayList<HeavyEnemy> H_enemies = new ArrayList<HeavyEnemy>();
 ArrayList<LightEnemy> L_enemies = new ArrayList<LightEnemy>();
 ArrayList<Heal> healPack = new ArrayList<Heal>();
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
-//ArrayList<Rocket> rockets = new ArrayList<Rocket>();
+ArrayList<Rocket> rockets = new ArrayList<Rocket>();
 
 
 void setup() {
@@ -103,15 +103,15 @@ void draw() {
     }
   }
 
-  //for (int i = rockets.size() - 1; i >= 0; i--) {
-  //  Rocket r = rockets.get(i);
-  //  r.update();
-  //  r.display();
+  for (int i = rockets.size() - 1; i >= 0; i--) {
+    Rocket r = rockets.get(i);
+    r.update();
+    r.display();
 
-  //  if (r.isOffScreen()) {
-  //    rockets.remove(i);
-  //  }
-  //}
+    if (r.isOffScreen()) {
+      rockets.remove(i);
+    }
+  }
 }
 
 void mousePressed() {
