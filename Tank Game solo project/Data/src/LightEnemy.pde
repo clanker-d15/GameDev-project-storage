@@ -11,7 +11,7 @@ class LightEnemy {
     speed = 5;
     reload = 300;
     shootDelay = 15;
-    // angle = ;
+    angle = HALF_PI;
     // turretAngle = ;
   }
 
