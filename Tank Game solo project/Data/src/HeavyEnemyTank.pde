@@ -11,6 +11,8 @@ class HeavyEnemy {
     base = loadImage("HeavyEnemyBase.png");
     turret = loadImage("HeavyEnemyTurret.png");
     speed = 3;
+    angle = HALF_PI;
+    // turretAngle = ;
   }
 
   // Member Methods
