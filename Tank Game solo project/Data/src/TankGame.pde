@@ -150,6 +150,9 @@ void keyPressed() {
     if (keyCode == 40) player.movingBackward = true;
     if (keyCode == 37) player.movingLeft = true;
     if (keyCode == 39) player.movingRight = true;
+
+  //if (key == 1) player.shootType = 1;
+  //if (key == 2) player.shootType = 2;
   }
 }
 
@@ -228,6 +231,13 @@ void startScreen() {
   text("Defend the base", width/5, height/2);
   textSize(20);
   text("Press any key to begin", width/2.5, height/1.9);
+
+  //text("Controls", width/2.5, height/4);
+  //text("WASD or arrow keys for movement", width/2.5, height/4);
+  //text("1 to switch to bullets", width/2.5, height/4);
+  //text("2 to switch to rockets", width/2.5, height/4);
+  //text("Left click to shoot", width/2.5, height/4);
+  //text("Hold right click to see stats", width/2.5, height/4);
 }
 
 void gameOver() {
