@@ -60,7 +60,14 @@ class Tank {
   }
 
   void update() {
+    if (health < 0) {
+      health = 0;
+    }
+    
     if (health > 0) {
+      if (health > health) {
+        health = 1350;
+      }
 
       // Movement and tank direction (Used old code as base)
       if (movingForward) {
