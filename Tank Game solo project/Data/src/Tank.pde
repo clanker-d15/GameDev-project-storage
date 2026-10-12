@@ -177,7 +177,7 @@ class Tank {
     }
   }
 
-  boolean Bullet.isHit() {
+  boolean isHit() {
     return true;
   }
 }
