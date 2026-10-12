@@ -13,12 +13,12 @@ class Heal {
 
   void update() {
     if (play == true) {
-      if (player.health < 850) {
-      }
+      
     }
   }
 
   boolean isHit() {
+    player.health = player.health + healAmount;
     return true;
   }
 }
