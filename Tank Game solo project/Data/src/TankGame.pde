@@ -4,8 +4,8 @@ HeavyEnemy H_enemy;
 LightEnemy L_enemy;
 Heal healthPack;
 
-import processing.sound.*;
-SoundFile laser1;
+// import processing.sound.*;
+// SoundFile laser1;
 
 PImage mouse, reloadMouse;
 int tankOffScreen, ax, ay;
@@ -33,7 +33,7 @@ void setup() {
   ax = mouseX + 15;
   ay = mouseY + 15;
 
-  laser1 = new SoundFile(this, "laser1.mp3");
+  // laser1 = new SoundFile(this, "laser1.mp3");
 }
 
 void draw() {
@@ -121,7 +121,7 @@ void mousePressed() {
       if (player.ammo > 0) {
         bullets.add(new Bullet(player.x, player.y));
         player.shoot();
-        laser1.play();
+        // laser1.play();
       }
     }
 
