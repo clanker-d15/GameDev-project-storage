@@ -178,6 +178,7 @@ class Tank {
   }
 
   boolean isHit() {
+    // player.health = player.health - damage;
     return true;
   }
 }
