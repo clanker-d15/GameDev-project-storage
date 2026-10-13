@@ -49,6 +49,10 @@ void draw() {
     player.update();
     player.display();
 
+    H_enemy.update();
+    H_enemy.display();
+    
+
     infoPanel();
 
     if (player.health<1) {
@@ -66,17 +70,45 @@ void draw() {
     textAlign(CENTER, CENTER);
     rectMode(CENTER);
     textSize(15);
-    if (player.ammo > 0) {
+    if (player.shootType == 1) {
+      if (player.ammo > 0) {
+        if (mouseY < 25 || mouseX < 25) {
+          fill(190, 200);
+          rect(mouseX + 23, mouseY + 17, 22, 19, 25);
+          fill(0);
+          text(player.ammo, mouseX + 23, mouseY + 15);
+        } else {
+          fill(190, 200);
+          rect(mouseX - 23, mouseY - 20, 22, 19, 25);
+          fill(0);
+          text(player.ammo, mouseX - 23, mouseY - 22);
+        }
+      } else {
+        if (mouseY < 25 || mouseX < 70) {
+          fill(190, 200);
+          rect(mouseX + 50, mouseY + 23, 82, 19, 25);
+          fill(0);
+          text("Reloading...", mouseX + 50, mouseY + 21);
+        } else {
+          fill(190, 200);
+          rect(mouseX - 50, mouseY - 23, 82, 19, 25);
+          fill(0);
+          text("Reloading...", mouseX - 50, mouseY - 25);
+        }
+      }
+    }
+  } else if (player.shootType == 2) {
+    if (player.rocketAmmo > 0) {
       if (mouseY < 25 || mouseX < 25) {
         fill(190, 200);
         rect(mouseX + 23, mouseY + 17, 22, 19, 25);
         fill(0);
-        text(player.ammo, mouseX + 23, mouseY + 15);
+        text(player.rocketAmmo, mouseX + 23, mouseY + 15);
       } else {
         fill(190, 200);
         rect(mouseX - 23, mouseY - 20, 22, 19, 25);
         fill(0);
-        text(player.ammo, mouseX - 23, mouseY - 22);
+        text(player.rocketAmmo, mouseX - 23, mouseY - 22);
       }
     } else {
       if (mouseY < 25 || mouseX < 70) {
@@ -93,7 +125,7 @@ void draw() {
     }
   }
 
-// Bullet and Rocket activators
+  // Bullet and Rocket activators
   for (int i = bullets.size() - 1; i >= 0; i--) {
     Bullet b = bullets.get(i);
     b.update();
@@ -118,15 +150,15 @@ void draw() {
 void mousePressed() {
   if (play == true) {
     if (mouseButton == LEFT) {
-      if (player.ammo > 0) {
-        bullets.add(new Bullet(player.x, player.y));
-        player.shoot();
-        // laser1.play();
+      if (player.shootType == 1) {
+        if (player.ammo > 0) {
+          bullets.add(new Bullet(player.x, player.y));
+          player.shoot();
+          // laser1.play();
+        }
       }
-    }
 
-    if (play == true) {
-      if (mouseButton == RIGHT) {
+      if (player.shootType == 2) {
         if (player.rocketAmmo > 0) {
           rockets.add(new Rocket(player.x, player.y));
           player.shoot();
@@ -151,10 +183,28 @@ void keyPressed() {
     if (keyCode == 37) player.movingLeft = true;
     if (keyCode == 39) player.movingRight = true;
 
-  //if (key == 1) player.shootType = 1;
-  //if (key == 2) player.shootType = 2;
+    if (keyCode == 49) player.shootType = 1;
+    if (keyCode == 50) player.shootType = 2;
   }
 }
+
+// Extra ammo switch mechanism
+void mouseWheel (MouseEvent event) {
+  float e = event.getCount();
+
+  if (e > 0) {
+    if (player.shootType == 1) {
+      player.shootType = 2;
+    } else {
+      player.shootType = 1;
+    }
+  } else if (player.shootType == 2) {
+    player.shootType = 1;
+  } else {
+    player.shootType = 2;
+  }
+}
+
 
 void keyReleased() {
   if (play == true) {
@@ -232,12 +282,22 @@ void startScreen() {
   textSize(20);
   text("Press any key to begin", width/2.5, height/1.9);
 
-  //text("Controls", width/2.5, height/4);
-  //text("WASD or arrow keys for movement", width/2.5, height/4);
-  //text("1 to switch to bullets", width/2.5, height/4);
-  //text("2 to switch to rockets", width/2.5, height/4);
-  //text("Left click to shoot", width/2.5, height/4);
-  //text("Hold right click to see stats", width/2.5, height/4);
+  textSize(35);
+  text("Controls", width/5, height/1.4);
+
+  text("Recent changes/updates", width/15, height/17);
+
+  textSize(20);
+  text("WASD or arrow keys for movement", width/4.5, height/1.35);
+  text("1 to switch to bullets", width/4.5, height/1.31);
+  text("2 to switch to rockets", width/4.5, height/1.27);
+  text("Left click to shoot", width/4.5, height/1.23);
+  text("Scroll to switch ammo type", width/4.5, height/1.19);
+
+  text("-update text", width/10, height/10.4);
+  text("-update text", width/10, height/8.6);
+  text("-update text", width/10, height/7.3);
+  text("-update text", width/10, height/6.4);
 }
 
 void gameOver() {
