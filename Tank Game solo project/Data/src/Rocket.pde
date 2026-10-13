@@ -4,8 +4,8 @@ class Rocket {
   Rocket(float x, float y) {
     this.x = x;
     this.y = y;
-    w = 5;
-    h = 17;
+    w = 7;
+    h = 20;
     speed = 16;
     angle = player.turretAngle;
     rocketDamage = 250;
