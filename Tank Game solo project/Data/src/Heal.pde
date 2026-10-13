@@ -4,8 +4,8 @@ class Heal {
   PImage healthImage;
 
   void setup() {
-    x = int(random(30, 670));
-    y = int(random(30, 670));
+    x = int(random(30, 850));
+    y = int(random(30, 850));
     c = (255);
     healAmount = 450;
     healthImage = loadImage("Heal_Icon.png");
@@ -13,7 +13,6 @@ class Heal {
 
   void update() {
     if (play == true) {
-      
     }
   }
 
