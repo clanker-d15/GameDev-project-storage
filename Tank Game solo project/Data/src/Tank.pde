@@ -1,6 +1,6 @@
 class Tank {
   // Member Variables
-  int x, y, health, speed, reload, healDelay, ammo, BulletReloadTime, RocketReloadTime, rocketAmmo, shootType;
+  int x, y, health, speed, reload, healDelay, ammo, BulletReloadTime, RocketReloadTime, rocketAmmo, shootType, shootDelay;
 
   float angle, turretAngle, rotationSpeed;
 
@@ -28,6 +28,7 @@ class Tank {
     RocketReloadTime = 550;
     rocketAmmo = 2;
     shootType = 1;
+    shootDelay = 5;
 
 
     base = loadImage("TankBase.png");
@@ -56,7 +57,6 @@ class Tank {
 
     image(turret, pivotOffsetX, pivotOffsety);
     popMatrix();
-
     popMatrix();
   }
 
@@ -64,7 +64,7 @@ class Tank {
     if (health < 0) {
       health = 0;
     }
-    
+
     if (health > 0) {
       if (health > health) {
         health = 1350;
@@ -158,16 +158,16 @@ class Tank {
   }
 
   void shoot() {
-    if (shootType = 1) {
+    if (shootType == 1) {
       if (ammo > 1) {
-        ammo = ammo - 1;
-        println("Player Shot Bullet | Ammo left: " + ammo);
+          ammo = ammo - 1;
+          println("Player Shot Bullet | Ammo left: " + ammo);
       } else {
         println("No Bullets left | Player Reloading Bullets...");
         ammo = 0;
       }
     }
-    if (shootType = 2) {
+    if (shootType == 2) {
       if (rocketAmmo > 1) {
         println("Player Rocket Shot | Rockets left: 1");
         rocketAmmo = rocketAmmo - 1;
