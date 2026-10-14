@@ -1,4 +1,4 @@
-class Barriers {
+class Barrier {
   int x, y, w, h, wallType;
   PImage thinWall, basicWall, toughWall, invincibleWall;
 
