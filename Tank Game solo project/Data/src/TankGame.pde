@@ -16,6 +16,7 @@ ArrayList<LightEnemy> L_enemies = new ArrayList<LightEnemy>();
 ArrayList<Heal> healPack = new ArrayList<Heal>();
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 ArrayList<Rocket> rockets = new ArrayList<Rocket>();
+ArrayList<Barrier> barriers = new ArrayList<Barrier>();
 
 
 void setup() {
