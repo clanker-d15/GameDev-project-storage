@@ -3,8 +3,8 @@ class Heal {
   PImage healthImage;
 
   void setup() {
-    x = int(random(30, 850));
-    y = int(random(30, 850));
+    x = int(random(50, 850));
+    y = int(random(50, 850));
     healAmount = 450;
     healthImage = loadImage("Heal_Icon.png");
     counter = 1500
