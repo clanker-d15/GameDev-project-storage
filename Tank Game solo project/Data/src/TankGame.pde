@@ -51,7 +51,9 @@ void draw() {
 
     H_enemy.update();
     H_enemy.display();
-    
+
+    healthPack.update();
+    healthPack.display();
 
     infoPanel();
 
