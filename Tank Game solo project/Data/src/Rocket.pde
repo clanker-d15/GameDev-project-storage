@@ -39,4 +39,23 @@ class Rocket {
     }
     return false;
   }
+
+  boolean isHit(HeavyEnemyTank het) {
+    float d = dist(x, y, het.x, het.y);
+    if (d < 40) {
+      het.health -= rocketDamage;
+      return true;
+    }
+    return false;
+  }
+  
+  boolean isHit(LightEnemy le) {
+    float d = dist(x, y, le.x, le.y);
+    if (d < 40) {
+      le.health -= rocketDamage;
+      return true;
+    }
+    return false;
+  }
 }
+
