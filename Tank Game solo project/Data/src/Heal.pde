@@ -24,6 +24,7 @@ class Heal {
 
   boolean isHit() {
     player.health = player.health + healAmount;
+    counter = 1500
     return true;
   }
 }
