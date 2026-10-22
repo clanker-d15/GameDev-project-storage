@@ -181,4 +181,8 @@ class Tank {
   boolean isHit() {
     return true;
   }
+
+  boolean Collision() {
+    return true;
+  }
 }
