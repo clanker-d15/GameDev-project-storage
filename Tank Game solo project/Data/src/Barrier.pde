@@ -3,7 +3,7 @@ class Barrier {
   PImage thinWall, basicWall, toughWall, invincibleWall;
   boolean Collision
 
-  void setup() {
+    () {
     x = int(random(75, 825));
     y = int(random(75, 825));
     w = int(random(5, 30));
@@ -20,19 +20,15 @@ class Barrier {
   void draw() {
     if (wallType == 1) {
       Image(thinWall, x, y, w, h);
-      
     }
     if (wallType == 2) {
       Image(basicWall, x, y, w, h);
-      
     }
     if (wallType == 3) {
       Image(toughWall, x, y, w, h);
-      
     }
     if (wallType == 4) {
       Image(invincibleWall, x, y, w, h);
-      
     }
   }
 
