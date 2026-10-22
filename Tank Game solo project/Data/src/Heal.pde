@@ -13,18 +13,16 @@ class Heal {
   void update() {
     if (play == true) {
       if (counter == 0) {
-        Image(healthImage,x,y);
-        
+        Image(healthImage, x, y);
       } else {
         counter = counter - 1;
-        
       }
     }
   }
 
   boolean isHit() {
     player.health = player.health + healAmount;
-    counter = 1500
+    counter = 1500;
     return true;
   }
 }
