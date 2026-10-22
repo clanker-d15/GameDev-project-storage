@@ -160,8 +160,8 @@ class Tank {
   void shoot() {
     if (shootType == 1) {
       if (ammo > 1) {
-          ammo = ammo - 1;
-          println("Player Shot Bullet | Ammo left: " + ammo);
+        ammo = ammo - 1;
+        println("Player Shot Bullet | Ammo left: " + ammo);
       } else {
         println("No Bullets left | Player Reloading Bullets...");
         ammo = 0;
