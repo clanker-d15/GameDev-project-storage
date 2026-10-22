@@ -15,7 +15,7 @@ class LightEnemy {
     turretAngle = -HALF_PI;
 
     base = loadImage("LightEnemyBase.png");
-    turret = loadImage("");
+    turret = loadImage("LightEnemyTurret.png");
   }
 
   // Member Methods
