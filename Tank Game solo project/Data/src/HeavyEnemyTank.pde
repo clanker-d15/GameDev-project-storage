@@ -120,7 +120,7 @@ class HeavyEnemy {
     }
   }
 
-// Add a delay to shooting
+  // Add a delay to shooting
 
   void shoot() {
     if (ammo > 1) {
