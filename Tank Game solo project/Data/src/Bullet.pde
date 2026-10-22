@@ -40,7 +40,7 @@ class Bullet {
     return false;
   }
 
-  boolean isHit(HeavyEnemyTank het) {
+  boolean isHit(HeavyEnemy het) {
     float d = dist(x, y, het.x, het.y);
     if (d < 40) {
       het.health -= bulletDamage;
@@ -48,7 +48,7 @@ class Bullet {
     }
     return false;
   }
-  
+
   boolean isHit(LightEnemy le) {
     float d = dist(x, y, le.x, le.y);
     if (d < 40) {
