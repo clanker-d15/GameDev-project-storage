@@ -8,6 +8,6 @@
 
 [Link for source code](url)
 
-#### Term 2 Projects
+## Term 2 Projects
 
 ![]()
