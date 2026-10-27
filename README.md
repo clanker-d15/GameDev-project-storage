@@ -2,11 +2,13 @@
 
 ## Term 1 Projects
 
+### Shape Game
+
+![ShapeGame](url)
+
 ### Tank Game
 
 ![TankGame](url)
-
-[Link for source code](url)
 
 ## Term 2 Projects
 
