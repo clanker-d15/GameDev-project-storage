@@ -1,5 +1,5 @@
-class LightEnemy {
-  int x, y, health, damage, speed, reload, shootDelay, ammo;
+class HeavyEnemy {
+  int x, y, health, damage, speed, shootDelay, BulletReloadTime, ammo;
   float angle, turretAngle;
   PImage base, turret;
 
@@ -9,20 +9,19 @@ class LightEnemy {
   boolean movingRight = false;
 
   // Contructor
-  LightEnemy(int x, int y) {
-    x = width/2;
-    y = y + 100;
-    health = 475;
-    damage = 7;
-    speed = 5;
-    ammo = 50;
-    reload = 300;
-    shootDelay = 20;
+  HeavyEnemy(int x, int y) {
+    x = width/5;
+    y = 100;
+    health = 1000;
+    damage = 30;
+    base = loadImage("HeavyEnemyBase.png");
+    turret = loadImage("HeavyEnemyTurret.png");
+    speed = 3;
     angle = HALF_PI;
     turretAngle = -HALF_PI;
-
-    base = loadImage("LightEnemyBase.png");
-    turret = loadImage("LightEnemyTurret.png");
+    ammo = 12;
+    BulletReloadTime = 190;
+    shootDelay = 40;
   }
 
   // Member Methods
@@ -55,7 +54,7 @@ class LightEnemy {
 
     if (health > 0) {
       if (health > health) {
-        health = 475;
+        health = 1000;
       }
     }
 
@@ -104,27 +103,29 @@ class LightEnemy {
     if (movingBackward == true && movingLeft == true && movingForward == true && movingRight == true) {
       speed = 0;
     } else {
-      speed = 5;
+      speed = 3;
     }
 
     if (ammo == 0) {
-      reload = reload - 1;
+      BulletReloadTime = BulletReloadTime - 1;
       shootDelay = 0;
     }
 
-    if (reload < 0) {
-      reload = 300;
-      ammo = 50;
-      println("Light enemy reloaded | Light enemy ammo left: " + ammo);
+    if (BulletReloadTime < 0) {
+      BulletReloadTime = 200;
+      ammo = 12;
+      println("Heavy enemy reloaded | Heavy enemy ammo left: " + ammo);
     }
   }
+
+  // Add a delay to shooting
 
   void shoot() {
     if (ammo > 1) {
       ammo = ammo - 1;
-      println("Light enemy shot bullet | Light enemy ammo left: " + ammo);
+      println("Heavy enemy shot bullet | Heavy enemy ammo left: " + ammo);
     } else {
-      println("Light enemy reloading...");
+      println("Heavy enemy reloading...");
       ammo = 0;
     }
   }
