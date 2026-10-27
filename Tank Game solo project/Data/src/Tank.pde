@@ -1,6 +1,6 @@
 class Tank {
   // Member Variables
-  int x, y, health, speed, reload, healDelay, ammo, BulletReloadTime, RocketReloadTime, rocketAmmo, shootType, shootDelay;
+  int x, y, health, speed, healDelay, ammo, BulletReloadTime, RocketReloadTime, rocketAmmo, shootType, shootDelay;
 
   float angle, turretAngle, rotationSpeed;
 
