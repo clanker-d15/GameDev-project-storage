@@ -7,7 +7,7 @@ class Heal {
     y = int(random(50, 850));
     healAmount = 450;
     healthImage = loadImage("Heal_Icon.png");
-    counter = 1500
+    counter = 1500;
   }
 
   void update() {
