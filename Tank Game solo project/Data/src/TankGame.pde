@@ -45,14 +45,10 @@ void draw() {
   if (play == true) {
     background(255);
 
-    // add enemy and healPacks
+    // add enemies and health packs
 
     player.update();
     player.display();
-
-    H_enemy.update();
-    H_enemy.display();
-
 
     infoPanel();
 
