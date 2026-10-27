@@ -1,5 +1,5 @@
 class HeavyEnemy {
-  int x, y, health, damage, speed, reload, shootDelay, BulletReloadTime, ammo;
+  int x, y, health, damage, speed, shootDelay, BulletReloadTime, ammo;
   float angle, turretAngle;
   PImage base, turret;
 
@@ -80,7 +80,6 @@ class HeavyEnemy {
       speed = speed/2;
     }
     if (movingForward == true && movingLeft == true) {
-      // Found this absurd angle that worked by experimenting for 20 minutes
       angle = -10200;
       speed = speed/2;
     }
@@ -89,7 +88,6 @@ class HeavyEnemy {
       speed = speed/2;
     }
     if (movingBackward == true && movingLeft == true) {
-      // Found this angle the same way
       angle = 10200;
       speed = speed/2;
     }
@@ -127,7 +125,7 @@ class HeavyEnemy {
       ammo = ammo - 1;
       println("Heavy enemy shot bullet | Heavy enemy ammo left: " + ammo);
     } else {
-      println("Heavy enemy out of bullets | Heavy enemy reloading...");
+      println("Heavy enemy reloading...");
       ammo = 0;
     }
   }
