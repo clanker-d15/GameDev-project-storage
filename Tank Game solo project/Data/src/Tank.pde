@@ -17,7 +17,6 @@ class Tank {
     x = width/2;
     y = 850;
     health = 1350;
-    reload = 110;
     rotationSpeed = 0.03;
     speed = 3;
     angle = -HALF_PI;
