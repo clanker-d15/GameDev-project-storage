@@ -13,7 +13,7 @@ class Heal {
   void update() {
     if (play == true) {
       if (counter == 0) {
-        Image(healthImage, x, y);
+        image(healthImage, x, y);
       } else {
         counter = counter - 1;
       }
