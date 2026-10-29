@@ -27,7 +27,7 @@ class Tank {
     RocketReloadTime = 550;
     rocketAmmo = 2;
     shootType = 1;
-    shootDelay = 5;
+    shootDelay = 25;
 
 
     base = loadImage("TankBase.png");
@@ -132,6 +132,14 @@ class Tank {
       x = constrain(x, 0, width);
       y = constrain(y, 0, height);
 
+      if (ammo = ammo - 1) {
+        shootDelay = 25;
+        shootDelay = shootDelay - 1;
+      } 
+
+      if (shootDelay < 1) {
+        shootDelay = 0;
+      }
       
       // reload
       if (ammo == 0) {
@@ -166,7 +174,7 @@ class Tank {
           println("No Bullets left | Player Reloading Bullets...");
           ammo = 0;
         }
-      }
+      //}
     }
     if (shootType == 2) {
       if (rocketAmmo > 1) {
