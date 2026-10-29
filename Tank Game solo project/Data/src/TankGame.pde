@@ -149,9 +149,11 @@ void mousePressed() {
     if (mouseButton == LEFT) {
       if (player.shootType == 1) {
         if (player.ammo > 0) {
-          bullets.add(new Bullet(player.x, player.y));
-          player.shoot();
-          // laser1.play();
+          //if (player.shootDelay == 0) {
+            bullets.add(new Bullet(player.x, player.y));
+            player.shoot();
+            // laser1.play();
+          //}
         }
       }
 
