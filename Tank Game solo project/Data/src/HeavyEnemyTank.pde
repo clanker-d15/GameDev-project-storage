@@ -59,37 +59,37 @@ class HeavyEnemy {
     }
 
     if (movingForward) {
-      y = y - speed;
+      y -= speed;
       angle = -HALF_PI;
     }
     if (movingBackward) {
-      y = y + speed;
+      y += speed;
       angle = HALF_PI;
     }
     if (movingLeft) {
-      x = x - speed;
+      x -= speed;
       angle = PI;
     }
     if (movingRight) {
-      x = x + speed;
+      x += speed;
       angle = 0;
     }
 
     if (movingForward == true && movingRight == true) {
       angle = -HALF_PI/2;
-      speed = speed/2;
+      speed /= 2;
     }
     if (movingForward == true && movingLeft == true) {
       angle = -10200;
-      speed = speed/2;
+      speed /= 2;
     }
     if (movingBackward == true && movingRight == true) {
       angle = HALF_PI/2;
-      speed = speed/2;
+      speed /= 2;
     }
     if (movingBackward == true && movingLeft == true) {
       angle = 10200;
-      speed = speed/2;
+      speed /= 2;
     }
 
     // Movement debuggers
