@@ -71,39 +71,39 @@ class Tank {
 
       // Movement and tank direction (Used old code as base)
       if (movingForward) {
-        y = y - speed;
+        y -= speed;
         angle = -HALF_PI;
       }
       if (movingBackward) {
-        y = y + speed;
+        y += speed;
         angle = HALF_PI;
       }
       if (movingLeft) {
-        x = x - speed;
+        x -= speed;
         angle = PI;
       }
       if (movingRight) {
-        x = x + speed;
+        x += speed;
         angle = 0;
       }
 
       if (movingForward == true && movingRight == true) {
         angle = -HALF_PI/2;
-        speed = speed/2;
+        speed /= 2;
       }
       if (movingForward == true && movingLeft == true) {
         // Found this absurd angle that worked by experimenting for 20 minutes
         angle = -10200;
-        speed = speed/2;
+        speed /= 2;
       }
       if (movingBackward == true && movingRight == true) {
         angle = HALF_PI/2;
-        speed = speed/2;
+        speed /= 2;
       }
       if (movingBackward == true && movingLeft == true) {
         // Found this angle the same way
         angle = 10200;
-        speed = speed/2;
+        speed /= 2;
       }
 
       // Movement debuggers
@@ -134,7 +134,7 @@ class Tank {
 
       if (ammo = ammo - 1) {
         shootDelay = 25;
-        shootDelay = shootDelay - 1;
+        shootDelay -= 1;
       } 
 
       if (shootDelay < 1) {
@@ -143,11 +143,11 @@ class Tank {
       
       // reload
       if (ammo == 0) {
-        BulletReloadTime = BulletReloadTime - 1;
+        BulletReloadTime -= 1;
       }
 
       if (rocketAmmo == 0) {
-        RocketReloadTime = RocketReloadTime - 1;
+        RocketReloadTime -= 1;
       }
 
       if (BulletReloadTime < 0) {
@@ -168,7 +168,7 @@ class Tank {
     if (shootType == 1) {
     //if (shootDelay == 0) {
         if (ammo > 1) {
-          ammo = ammo - 1;
+          ammo -= 1;
           println("Player Shot Bullet | Ammo left: " + ammo);
         } else {
           println("No Bullets left | Player Reloading Bullets...");
@@ -179,7 +179,7 @@ class Tank {
     if (shootType == 2) {
       if (rocketAmmo > 1) {
         println("Player Rocket Shot | Rockets left: 1");
-        rocketAmmo = rocketAmmo - 1;
+        rocketAmmo -= 1;
       } else {
         println("No Rockets left | Player Reloading Rockets...");
         rocketAmmo = 0;
