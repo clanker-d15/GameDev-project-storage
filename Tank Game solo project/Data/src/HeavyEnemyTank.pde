@@ -21,7 +21,7 @@ class HeavyEnemy {
     turretAngle = -HALF_PI;
     ammo = 12;
     BulletReloadTime = 190;
-    shootDelay = 40;
+    shootDelay = 60;
   }
 
   // Member Methods
