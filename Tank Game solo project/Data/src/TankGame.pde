@@ -80,7 +80,7 @@ void draw() {
           fill(0);
           text(player.ammo, mouseX - 23, mouseY - 22);
         }
-      } else {
+      } else if (player.shootType = 2) {
         if (mouseY < 25 || mouseX < 70) {
           fill(190, 200);
           rect(mouseX + 50, mouseY + 23, 82, 19, 25);
