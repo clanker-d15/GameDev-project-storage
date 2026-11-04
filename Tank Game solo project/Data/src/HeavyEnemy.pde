@@ -140,10 +140,6 @@ class HeavyEnemy {
 
   void deathAnim() {}
 
-  boolean isDead() {
-    return true;
-  }
-
   boolean isHit() {
     return true;
   }
