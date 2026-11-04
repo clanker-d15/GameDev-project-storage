@@ -129,11 +129,29 @@ class LightEnemy {
     }
   }
 
-void wander() {
+  void wander() {
     
   }
 
-  void chase() {}
+  void chase() {
+    int dx = (abs(player.x - x));
+    int dy = (abs(player.y - y));
+    if (dx > dy) {
+      if (x<player.x) {
+        x +=speed ;
+        
+      } else {
+        x -= speed;
+      }
+    }
+    else {
+      if (y<player.y) {
+        y +=speed ;
+      } else {
+        y -= speed;
+      }
+    }
+  }
 
   void fallBack() {}
 
