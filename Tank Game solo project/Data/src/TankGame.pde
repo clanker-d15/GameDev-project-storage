@@ -291,10 +291,10 @@ void startScreen() {
   text("Left-click to shoot", width/4.5, height/1.23);
   text("Scroll to switch ammo type", width/4.5, height/1.19);
 
-  text("-update text", width/10, height/10.4);
-  text("-update text", width/10, height/8.6);
-  text("-update text", width/10, height/7.3);
-  text("-update text", width/10, height/6.4);
+  text("-Added shoot delay", width/10, height/10.4);
+  text("-Added healing overtime", width/10, height/8.6);
+  text("", width/10, height/7.3);
+  text("", width/10, height/6.4);
 }
 
 void gameOver() {
