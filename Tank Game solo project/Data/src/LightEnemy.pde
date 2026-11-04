@@ -129,10 +129,15 @@ class LightEnemy {
     }
   }
 
-  void move(int tempX, int tempY) {
-    x = tempX;
-    y = tempY;
+void wander() {
+    
   }
+
+  void chase() {}
+
+  void fallBack() {}
+
+  void deathAnim() {}
 
   boolean isHit() {
     return true;
