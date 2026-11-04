@@ -290,7 +290,7 @@ void startScreen() {
   text("WASD or arrow keys for movement", width/4.5, height/1.35);
   text("1 to switch to bullets", width/4.5, height/1.31);
   text("2 to switch to rockets", width/4.5, height/1.27);
-  text("Left click to shoot", width/4.5, height/1.23);
+  text("Left-click to shoot", width/4.5, height/1.23);
   text("Scroll to switch ammo type", width/4.5, height/1.19);
 
   text("-update text", width/10, height/10.4);
