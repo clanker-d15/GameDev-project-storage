@@ -130,9 +130,18 @@ class HeavyEnemy {
     }
   }
 
-  void move(int tempX, int tempY) {
-    x = tempX;
-    y = tempY;
+  void wander() {
+    
+  }
+
+  void chase() {}
+
+  void fallBack() {}
+
+  void deathAnim() {}
+
+  boolean isDead() {
+    return true;
   }
 
   boolean isHit() {
