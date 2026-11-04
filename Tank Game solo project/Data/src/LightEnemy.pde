@@ -51,6 +51,11 @@ class LightEnemy {
   void update() {
     if (health < 0) {
       health = 0;
+      deathAnim();
+    }
+
+    if (health < 240) {
+      fallback();
     }
 
     if (health > 0) {
@@ -156,9 +161,13 @@ class LightEnemy {
     }
   }
 
-  void fallBack() {}
+  void fallBack() {
+    
+  }
 
-  void deathAnim() {}
+  void deathAnim() {
+    
+  }
 
   boolean isHit() {
     return true;
