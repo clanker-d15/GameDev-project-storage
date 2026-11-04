@@ -69,7 +69,7 @@ class Tank {
         health = 1350;
       }
 
-      // Movement and tank direction (Used old code as base)
+      // Movement and tank direction 
       if (movingForward) {
         y -= speed;
         angle = -HALF_PI;
@@ -92,7 +92,6 @@ class Tank {
         speed /= 2;
       }
       if (movingForward == true && movingLeft == true) {
-        // Found this absurd angle that worked by experimenting for 20 minutes
         angle = -10200;
         speed /= 2;
       }
@@ -101,7 +100,6 @@ class Tank {
         speed /= 2;
       }
       if (movingBackward == true && movingLeft == true) {
-        // Found this angle the same way
         angle = 10200;
         speed /= 2;
       }
