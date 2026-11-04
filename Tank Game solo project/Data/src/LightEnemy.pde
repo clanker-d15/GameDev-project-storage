@@ -130,7 +130,10 @@ class LightEnemy {
   }
 
   void wander() {
-    
+    if (random(1) < 0.01) {
+      angle += random(-PI/4, PI/4);
+      movingForward = true;
+    }
   }
 
   void chase() {
