@@ -69,6 +69,12 @@ class Tank {
         health = 1350;
       }
 
+      if (shootDelay < 1) {
+        shootDelay = 0;
+      } else {
+        shootDelay -= 1;
+      }
+      
       // Movement and tank direction 
       if (movingForward) {
         y -= speed;
@@ -164,13 +170,16 @@ class Tank {
 
   void shoot() {
     if (shootType == 1) {
+      if (shootDelay < 1) {
         if (ammo > 1) {
           ammo -= 1;
           println("Player Shot Bullet | Ammo left: " + ammo);
+          shootDelay = 25;
         } else {
           println("No Bullets left | Player Reloading Bullets...");
           ammo = 0;
         }
+      }
     }
     if (shootType == 2) {
       if (rocketAmmo > 1) {
