@@ -166,7 +166,6 @@ class Tank {
 
   void shoot() {
     if (shootType == 1) {
-    //if (shootDelay == 0) {
         if (ammo > 1) {
           ammo -= 1;
           println("Player Shot Bullet | Ammo left: " + ammo);
@@ -174,7 +173,6 @@ class Tank {
           println("No Bullets left | Player Reloading Bullets...");
           ammo = 0;
         }
-      //}
     }
     if (shootType == 2) {
       if (rocketAmmo > 1) {
