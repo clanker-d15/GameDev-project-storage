@@ -20,7 +20,7 @@ class Tank {
     rotationSpeed = 0.03;
     speed = 3;
     angle = -HALF_PI;
-    healDelay = 350;
+    healDelay = 450;
     turretAngle = HALF_PI;
     ammo = 12;
     BulletReloadTime = 200;
@@ -64,8 +64,17 @@ class Tank {
       health = 0;
     }
 
+    if (health < 1350) {
+      healDelay = 450;
+      healDelay -= 1;
+    } 
+
+    if (healDelay < 1) {
+      healDelay = 0;
+    } 
+
     if (health > 0) {
-      if (health > health) {
+      if (health > 1350) {
         health = 1350;
       }
 
