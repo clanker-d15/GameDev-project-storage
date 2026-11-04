@@ -20,7 +20,7 @@ ArrayList<Barrier> barriers = new ArrayList<Barrier>();
 
 
 void setup() {
-  size(700, 900);
+  size(1000, 1000);
   player = new Tank();
   H_enemy = new HeavyEnemy(0, 0);
   healthPack = new Heal();
