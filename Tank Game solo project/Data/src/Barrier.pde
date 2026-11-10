@@ -32,6 +32,21 @@ class Barrier {
     }
   }
 
+  void update() {
+    if (wallType == 1) {
+      
+    }
+    if (wallType == 2) {
+      
+    }
+    if (wallType == 3) {
+      
+    }
+    if (wallType == 4) {
+      
+    }
+  }
+
   boolean Collision() {
     return true;
   }
