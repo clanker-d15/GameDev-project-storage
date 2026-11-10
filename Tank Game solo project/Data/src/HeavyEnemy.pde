@@ -1,6 +1,6 @@
 class HeavyEnemy {
-  int x, y, health, damage, speed, shootDelay, BulletReloadTime, ammo;
-  float angle, turretAngle;
+  int x, y, health, damage, speed, shootDelay, BulletReloadTime, ammo, regenTime;
+  float angle, turretAngle, spotDistance, stopDistance;
   PImage base, turret;
 
   boolean movingForward = false;
@@ -14,6 +14,8 @@ class HeavyEnemy {
     y = 100;
     health = 1000;
     damage = 30;
+    spotDistance = 550;
+    stopDistance = 75;
     base = loadImage("HeavyEnemyBase.png");
     turret = loadImage("HeavyEnemyTurret.png");
     speed = 3;
