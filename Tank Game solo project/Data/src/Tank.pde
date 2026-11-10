@@ -11,6 +11,7 @@ class Tank {
   boolean movingLeft = false;
   boolean movingRight = false;
 
+// Note: make the movement smoother. Make it take time to stop and speed up again.
 
   // Constructor
   Tank() {
