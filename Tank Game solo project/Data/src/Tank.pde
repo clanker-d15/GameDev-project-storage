@@ -11,7 +11,7 @@ class Tank {
   boolean movingLeft = false;
   boolean movingRight = false;
 
-// Note: make the movement smoother. Make it take time to stop and speed up again. Also fix the rocket so it comes out of the rocket launcher on the tank turret
+// Note: make the movement smoother. Make it take time to stop and speed up again. Also fix the rocket so it comes out of the tank turret's rocket launcher. Also make the rockets and bullets models look better
 
   // Constructor
   Tank() {
