@@ -144,6 +144,7 @@ void draw() {
   }
 }
 
+// Shoot
 void mousePressed() {
   if (play == true) {
     if (mouseButton == LEFT) {
@@ -165,6 +166,24 @@ void mousePressed() {
   }
 }
 
+// Ammo switch
+void mouseWheel (MouseEvent event) {
+  float e = event.getCount();
+
+  if (e > 0) {
+    if (player.shootType == 1) {
+      player.shootType = 2;
+    } else {
+      player.shootType = 1;
+    }
+  } else if (player.shootType == 2) {
+    player.shootType = 1;
+  } else {
+    player.shootType = 2;
+  }
+}
+
+// Movement
 void keyPressed() {
   if (play == false) {
     if (keyPressed) play = true;
@@ -182,23 +201,6 @@ void keyPressed() {
 
     if (keyCode == 49) player.shootType = 1;
     if (keyCode == 50) player.shootType = 2;
-  }
-}
-
-// Extra ammo switch mechanism
-void mouseWheel (MouseEvent event) {
-  float e = event.getCount();
-
-  if (e > 0) {
-    if (player.shootType == 1) {
-      player.shootType = 2;
-    } else {
-      player.shootType = 1;
-    }
-  } else if (player.shootType == 2) {
-    player.shootType = 1;
-  } else {
-    player.shootType = 2;
   }
 }
 
