@@ -12,7 +12,7 @@ class Tank {
   boolean movingRight = false;
 
 // Note: make the movement smoother. Make it take time to stop and speed up again. (Medium Priority) Also fix the rocket so it comes out of the tank turret's rocket launcher. (High Priority)
-// Also make the rockets and bullets models look better. (Medium Priority) Make the turning more realistic (Lower Priority)
+// Also make the rockets and bullets models look better. (High Priority) Make the turning more realistic (Lower Priority)
 
   // Constructor
   Tank() {
