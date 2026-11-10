@@ -84,7 +84,7 @@ class Tank {
         shootDelay -= 1;
       }
       
-      // Movement and tank direction 
+      // Movement
       if (movingForward) {
         y -= speed;
         angle = -HALF_PI;
