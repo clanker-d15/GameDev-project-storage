@@ -15,7 +15,7 @@ class Heal {
       if (counter == 0) {
         image(healthImage, x, y);
       } else {
-        counter = counter - 1;
+        counter -= 1;
       }
     }
   }
