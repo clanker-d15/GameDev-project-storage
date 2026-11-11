@@ -1,5 +1,6 @@
 class Rocket {
   float x, y, w, h, speed, angle, rocketDamage;
+  PImage rocket;
 
   Rocket(float x, float y) {
     this.x = x;
@@ -9,6 +10,8 @@ class Rocket {
     speed = 16;
     angle = player.turretAngle;
     rocketDamage = 250;
+
+    rocket = loadImage("");
   }
 
   void update() {
@@ -20,9 +23,11 @@ class Rocket {
     fill(#F0A327);
     noStroke();
     rectMode(CENTER);
+    //imageMode(CENTER);
     pushMatrix();
     translate(x, y);
     rotate(angle + PI);
+    //image(rocket, 0, 0);
     rect(0, 0, w, h);
     popMatrix();
   }
