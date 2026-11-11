@@ -283,6 +283,7 @@ void startScreen() {
 
   textSize(35);
   text("Controls", width/5, height/1.4);
+  //text("Settings", width/5, height/1.4);
 
   textSize(20);
   text("WASD or arrow keys for movement", width/4.5, height/1.35);
@@ -290,6 +291,8 @@ void startScreen() {
   text("2 to switch to rockets", width/4.5, height/1.27);
   text("Left-click to shoot", width/4.5, height/1.23);
   text("Scroll to switch ammo type", width/4.5, height/1.19);
+
+  //text("Legacy movement", width/4.5, height/1.19);
 }
 
 void gameOver() {
