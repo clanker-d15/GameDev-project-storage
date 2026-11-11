@@ -284,8 +284,6 @@ void startScreen() {
   textSize(35);
   text("Controls", width/5, height/1.4);
 
-  text("Recent changes/updates", width/15, height/17);
-
   textSize(20);
   text("WASD or arrow keys for movement", width/4.5, height/1.35);
   text("1 to switch to bullets", width/4.5, height/1.31);
@@ -298,7 +296,7 @@ void gameOver() {
   if (player.health < 1) {
     textAlign(CENTER, CENTER);
     fill(0, 190);
-    rect(0, 0, 1000, 1000);
+    rect(0, 0, 1200, 1200);
     fill(255);
 
     textSize(25);
