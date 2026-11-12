@@ -10,7 +10,7 @@ class HeavyEnemy {
 
   // Contructor
   HeavyEnemy(int x, int y) {
-    x = width/5;
+    x = width/6;
     y = 100;
     health = 1000;
     damage = 30;
