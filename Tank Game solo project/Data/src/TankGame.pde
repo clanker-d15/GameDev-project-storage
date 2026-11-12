@@ -308,3 +308,9 @@ void gameOver() {
     noLoop();
   }
 }
+
+void pause() {
+  if (play == true && player.health > 0) {
+    
+  }
+}
