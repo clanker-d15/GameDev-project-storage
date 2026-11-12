@@ -19,8 +19,6 @@ class Barrier {
     basicWall = loadImage("");
     toughWall = loadImage("");
     invincibleWall = loadImage("");
-
-     State currentState = State.Unbroken;
   }
 
   void draw() {
@@ -40,43 +38,19 @@ class Barrier {
 
   void update() {
     if (thinWallHealth < 0) {
-      switch(currentState) {
-        case Broken:
       
-        break;
-      }
     } else {
-      switch(currentState) {
-        case Unbroken:
       
-        break;
-      }
     }
     if (basicWallHealth < 0) {
-      switch(currentState) {
-        case Broken:
       
-        break;
-      }
     } else {
-      switch(currentState) {
-        case Unbroken:
       
-        break;
-      }
     }
     if (toughWallHealth < 0) {
-      switch(currentState) {
-        case Broken:
       
-        break;
-      }
     } else {
-      switch(currentState) {
-        case Unbroken:
       
-        break;
-      }
     }
 
 
