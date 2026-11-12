@@ -9,7 +9,7 @@ Heal healthPack;
 
 PImage mouse, reloadMouse;
 int tankOffScreen, ax, ay;
-boolean play;
+boolean play, legacyMovement;
 
 ArrayList<HeavyEnemy> H_enemies = new ArrayList<HeavyEnemy>();
 ArrayList<LightEnemy> L_enemies = new ArrayList<LightEnemy>();
@@ -28,8 +28,8 @@ void setup() {
   reloadMouse = loadImage("ReloadCrosshair.png");
   H_enemies.add(new HeavyEnemy(int(random(width)), -60));
   L_enemies.add(new LightEnemy(int(random(width)), -60));
-  noCursor();
   play = false;
+  legacyMovement = false;
 
   ax = mouseX + 15;
   ay = mouseY + 15;
@@ -43,6 +43,7 @@ void draw() {
   }
 
   if (play == true) {
+    noCursor();
     background(255);
 
     // add enemies and health packs
@@ -278,8 +279,10 @@ void infoPanel() {
 
 void startScreen() {
   background(0);
+  
+  fill(100);
+  rect(width/1.515, height/1.38, 165, 30, 20);
 
-  // Add more to start screen
   fill(255);
   textSize(50);
   text("Defend the base", width/5, height/2);
@@ -287,17 +290,22 @@ void startScreen() {
   text("Press any key to begin", width/2.5, height/1.9);
 
   textSize(35);
-  text("Controls", width/5, height/1.4);
-  //text("Settings", width/5, height/1.4);
+  text("Controls", width/7, height/1.4);
+  text("Settings", width/1.5, height/1.4);
 
   textSize(20);
-  text("WASD or arrow keys for movement", width/4.5, height/1.35);
-  text("1 to switch to bullets", width/4.5, height/1.31);
-  text("2 to switch to rockets", width/4.5, height/1.27);
-  text("Left-click to shoot", width/4.5, height/1.23);
-  text("Scroll to switch ammo type", width/4.5, height/1.19);
+  text("WASD or arrow keys for movement", width/5.5, height/1.35);
+  text("1 to switch to bullets", width/5.5, height/1.31);
+  text("2 to switch to rockets", width/5.5, height/1.27);
+  text("Left-click to shoot", width/5.5, height/1.23);
+  text("Scroll to switch ammo type", width/5.5, height/1.19);
 
-  //text("Legacy movement", width/4.5, height/1.19);
+  text("Legacy movement", width/1.5, height/1.34);
+  //if (legacyMovement == true) {
+    //text("On", width/1.18, height/1.335);
+  //} else {
+    //text("Off", width/1.18, height/1.335);
+  //}
 }
 
 void gameOver() {
