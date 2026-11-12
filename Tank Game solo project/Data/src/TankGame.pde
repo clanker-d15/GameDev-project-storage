@@ -20,7 +20,7 @@ ArrayList<Barrier> barriers = new ArrayList<Barrier>();
 
 
 void setup() {
-  size(1000, 1000);
+  size(925, 925);
   player = new Tank();
   H_enemy = new HeavyEnemy(0, 0);
   healthPack = new Heal();
@@ -80,7 +80,7 @@ void draw() {
           fill(0);
           text(player.ammo, mouseX - 23, mouseY - 22);
         }
-      } else if (player.shootType = 2) {
+      } else if (player.shootType == 2) {
         if (mouseY < 25 || mouseX < 70) {
           fill(190, 200);
           rect(mouseX + 50, mouseY + 23, 82, 19, 25);
