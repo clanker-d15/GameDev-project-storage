@@ -11,7 +11,7 @@ class Rocket {
     angle = player.turretAngle;
     rocketDamage = 250;
 
-    rocket = loadImage("");
+    //rocket = loadImage("");
   }
 
   void update() {
