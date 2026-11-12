@@ -11,7 +11,7 @@ class Bullet {
     angle = player.turretAngle;
     bulletDamage = 30;
 
-    bullet = loadImage("");
+    //bullet = loadImage("");
   }
 
   void update() {
