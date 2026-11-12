@@ -55,7 +55,7 @@ class LightEnemy {
     }
 
     if (health < 240) {
-      fallback();
+
     }
 
     if (health > 0) {
