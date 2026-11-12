@@ -201,6 +201,11 @@ void keyPressed() {
 
     if (keyCode == 49) player.shootType = 1;
     if (keyCode == 50) player.shootType = 2;
+
+    if (key == 'p') {
+      
+    }
+
   }
 }
 
