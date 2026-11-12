@@ -15,25 +15,25 @@ class Barrier {
 
     wallType = int(random(0, 4));
 
-    thinWall = loadImage("");
-    basicWall = loadImage("");
-    toughWall = loadImage("");
-    invincibleWall = loadImage("");
+    //thinWall = loadImage("");
+    //basicWall = loadImage("");
+    //toughWall = loadImage("");
+    //invincibleWall = loadImage("");
   }
 
   void draw() {
-    if (wallType == 1) {
-      image(thinWall, x, y, w, h);
-    }
-    if (wallType == 2) {
-      image(basicWall, x, y, w, h);
-    }
-    if (wallType == 3) {
-      image(toughWall, x, y, w, h);
-    }
-    if (wallType == 4) {
-      image(invincibleWall, x, y, w, h);
-    }
+    //if (wallType == 1) {
+    //  image(thinWall, x, y, w, h);
+    //}
+    //if (wallType == 2) {
+    //  image(basicWall, x, y, w, h);
+    //}
+    //if (wallType == 3) {
+    //  image(toughWall, x, y, w, h);
+    //}
+    //if (wallType == 4) {
+    //  image(invincibleWall, x, y, w, h);
+    //}
   }
 
   void update() {
