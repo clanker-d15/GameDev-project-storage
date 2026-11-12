@@ -147,10 +147,10 @@ class Tank {
       x = constrain(x, 0, width);
       y = constrain(y, 0, height);
 
-      if (ammo = ammo - 1) {
+      if (ammo < ammo - 1) {
         shootDelay = 25;
         shootDelay -= 1;
-      } 
+      }
 
       if (shootDelay < 1) {
         shootDelay = 0;
