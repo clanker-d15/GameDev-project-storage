@@ -87,6 +87,7 @@ class Tank {
       }
       
       // Movement
+      //if (TankGame.legacyMovement == true) {
       if (movingForward) {
         y -= speed;
         angle = -HALF_PI;
@@ -134,6 +135,7 @@ class Tank {
       } else {
         speed = 3;
       }
+      //}
 
 
       // Turret rotation
