@@ -9,7 +9,7 @@ Heal healthPack;
 
 PImage mouse, reloadMouse;
 int tankOffScreen, ax, ay;
-boolean play, legacyMovement, particles;
+boolean play, pause, legacyMovement, particles, sound;
 
 ArrayList<HeavyEnemy> H_enemies = new ArrayList<HeavyEnemy>();
 ArrayList<LightEnemy> L_enemies = new ArrayList<LightEnemy>();
@@ -29,8 +29,10 @@ void setup() {
   H_enemies.add(new HeavyEnemy(int(random(width)), -60));
   L_enemies.add(new LightEnemy(int(random(width)), -60));
   play = false;
+  pause = false;
   legacyMovement = false;
   particles = true;
+  sound = true;
 
   ax = mouseX + 15;
   ay = mouseY + 15;
@@ -148,7 +150,7 @@ void draw() {
 
 // Shoot
 void mousePressed() {
-  if (play == true) {
+  if (play == true && pause == false) {
     if (mouseButton == LEFT) {
       if (player.shootType == 1) {
         if (player.ammo > 0) {
@@ -179,6 +181,14 @@ void mousePressed() {
         particles = true;
       } else {
         particles = false;
+      }
+    }
+
+    if (mouseX > 612 && mouseX < 677 && mouseY > 742 && mouseY < 772) {
+      if (sound == false) {
+        sound = true;
+      } else {
+        sound = false;
       }
     }
   }
@@ -221,6 +231,7 @@ void keyPressed() {
     if (keyCode == 50) player.shootType = 2;
 
     if (key == 'p') {
+      pause();
     }
   }
 }
@@ -298,6 +309,7 @@ void startScreen() {
   fill(100);
   rect(612, 671, 165, 30, 15);
   rect(612, 707, 80, 30, 15);
+  rect(612, 742, 65, 30, 15);
 
   fill(255);
   textSize(50);
@@ -329,6 +341,13 @@ void startScreen() {
   } else {
     text("Off", 697, 728);
   }
+
+  text("Sound", 617, 763);
+  if (sound == true) {
+    text("On", 682, 763);
+  } else {
+    text("Off", 682, 763);
+  }
 }
 
 void gameOver() {
@@ -336,8 +355,8 @@ void gameOver() {
     textAlign(CENTER, CENTER);
     fill(0, 190);
     rect(0, 0, 1200, 1200);
-    fill(255);
 
+    fill(255);
     textSize(25);
     text("Game Over! Your tank was destroyed.", 200, 400);
     text("Rerun the game to restart", 255, 430);
@@ -347,5 +366,25 @@ void gameOver() {
 
 void pause() {
   if (play == true && player.health > 0) {
+    if (pause == false) {
+      pause = true;
+      noLoop();
+      textAlign(CENTER, CENTER);
+
+      fill(0, 190);
+      rect(400, 400, 1200, 1200);
+
+      fill(255);
+      textSize(60);
+      text("Paused", 300, 400);
+      textSize(25);
+      text("Press 'P' to unpause", 355, 450);
+
+      cursor();
+    } else {
+      pause = false;
+      loop();
+      noCursor();
+    }
   }
 }
