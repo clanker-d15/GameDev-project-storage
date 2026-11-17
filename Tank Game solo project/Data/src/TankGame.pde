@@ -9,7 +9,7 @@ Heal healthPack;
 
 PImage mouse, reloadMouse;
 int tankOffScreen, ax, ay;
-boolean play, legacyMovement;
+boolean play, legacyMovement, particles;
 
 ArrayList<HeavyEnemy> H_enemies = new ArrayList<HeavyEnemy>();
 ArrayList<LightEnemy> L_enemies = new ArrayList<LightEnemy>();
@@ -30,6 +30,7 @@ void setup() {
   L_enemies.add(new LightEnemy(int(random(width)), -60));
   play = false;
   legacyMovement = false;
+  particles = true;
 
   ax = mouseX + 15;
   ay = mouseY + 15;
@@ -164,6 +165,22 @@ void mousePressed() {
         }
       }
     }
+  } else if (play == false) {
+    if (mouseX > 612 && mouseX < 777 && mouseY > 671 && mouseY < 701) {
+      if (legacyMovement == false) {
+        legacyMovement = true;
+      } else {
+        legacyMovement = false;
+      }
+    }
+
+    if (mouseX > 612 && mouseX < 692 && mouseY > 707 && mouseY < 737) {
+      if (particles == false) {
+        particles = true;
+      } else {
+        particles = false;
+      }
+    }
   }
 }
 
@@ -204,9 +221,7 @@ void keyPressed() {
     if (keyCode == 50) player.shootType = 2;
 
     if (key == 'p') {
-      
     }
-
   }
 }
 
@@ -279,9 +294,10 @@ void infoPanel() {
 
 void startScreen() {
   background(0);
-  
+
   fill(100);
-  rect(width/1.515, height/1.38, 165, 30, 20);
+  rect(612, 671, 165, 30, 15);
+  rect(612, 707, 80, 30, 15);
 
   fill(255);
   textSize(50);
@@ -300,12 +316,19 @@ void startScreen() {
   text("Left-click to shoot", width/5.5, height/1.23);
   text("Scroll to switch ammo type", width/5.5, height/1.19);
 
-  text("Legacy movement", width/1.5, height/1.34);
-  //if (legacyMovement == true) {
-    //text("On", width/1.18, height/1.335);
-  //} else {
-    //text("Off", width/1.18, height/1.335);
-  //}
+  text("Legacy movement", 617, 693);
+  if (legacyMovement == true) {
+    text("On", width/1.18, 693);
+  } else {
+    text("Off", width/1.18, 693);
+  }
+
+  text("Particles", 617, 728);
+  if (particles == true) {
+    text("On", 697, 728);
+  } else {
+    text("Off", 697, 728);
+  }
 }
 
 void gameOver() {
@@ -324,6 +347,5 @@ void gameOver() {
 
 void pause() {
   if (play == true && player.health > 0) {
-    
   }
 }
