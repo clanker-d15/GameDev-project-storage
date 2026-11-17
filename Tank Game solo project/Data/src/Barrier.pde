@@ -42,22 +42,6 @@ class Barrier {
   }
 
   void update() {
-    if (thinWallHealth < 0) {
-      
-    } else {
-      
-    }
-    if (basicWallHealth < 0) {
-      
-    } else {
-      
-    }
-    if (toughWallHealth < 0) {
-      
-    } else {
-      
-    }
-
 
     if (wallType == 1) {
       
