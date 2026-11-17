@@ -1,6 +1,5 @@
 class Bullet {
   float x, y, w, h, speed, angle, bulletDamage;
-  PImage bullet;
 
   Bullet(float x, float y) {
     this.x = x;
@@ -21,11 +20,9 @@ class Bullet {
     fill(#F0A327);
     noStroke();
     rectMode(CENTER);
-    //imageMode(CENTER);
     pushMatrix();
     translate(x, y);
     rotate(angle + PI);
-    //image(bullet,0,0);
     rect(0, 0, w, h);
     popMatrix();
   }
