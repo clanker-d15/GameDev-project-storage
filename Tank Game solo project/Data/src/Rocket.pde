@@ -7,11 +7,11 @@ class Rocket {
     this.y = y;
     w = 7;
     h = 20;
-    speed = 16;
+    speed = 20;
     angle = player.turretAngle;
     rocketDamage = 250;
 
-    //rocket = loadImage("");
+    rocket = loadImage("Rocket.png");
   }
 
   void update() {
@@ -22,13 +22,11 @@ class Rocket {
   void display() {
     fill(#F0A327);
     noStroke();
-    rectMode(CENTER);
-    //imageMode(CENTER);
+    imageMode(CENTER);
     pushMatrix();
     translate(x, y);
     rotate(angle + PI);
-    //image(rocket, 0, 0);
-    rect(0, 0, w, h);
+    image(rocket, 0, 0);
     popMatrix();
   }
 
