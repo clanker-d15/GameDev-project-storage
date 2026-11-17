@@ -7,11 +7,9 @@ class Bullet {
     this.y = y;
     w = 2;
     h = 21;
-    speed = 24;
+    speed = 32;
     angle = player.turretAngle;
     bulletDamage = 30;
-
-    //bullet = loadImage("");
   }
 
   void update() {
