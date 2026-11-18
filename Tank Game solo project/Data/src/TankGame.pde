@@ -10,7 +10,7 @@ Heal healthPack;
 // Movie particleSample, legacyMovementSample, detailsSample;
 
 import processing.sound.*;
-// SoundFile shoot1, shoot2, shoot3, idle, move;
+SoundFile shoot1, shoot2, shoot3, idle, move;
 
 PImage mouse, reloadMouse;
 int tankOffScreen, ax, ay, detailLevel;
