@@ -4,8 +4,8 @@ HeavyEnemy H_enemy;
 LightEnemy L_enemy;
 Heal healthPack;
 
-// import processing.sound.*;
-// SoundFile laser1;
+import processing.sound.*;
+SoundFile shoot1, shoot2, shoot3, idle, move;
 
 PImage mouse, reloadMouse;
 int tankOffScreen, ax, ay;
@@ -37,7 +37,11 @@ void setup() {
   ax = mouseX + 15;
   ay = mouseY + 15;
 
-  // laser1 = new SoundFile(this, "laser1.mp3");
+  // shoot1 = new SoundFile(this, "shoot1.mp3");
+  // shoot2 = new SoundFile(this, "shoot2.mp3");
+  // shoot3 = new SoundFile(this, "shoot3.mp3");
+  // idle = new SoundFile(this, "idle.mp3");
+  // move = new SoundFile(this, "move.mp3");
 }
 
 void draw() {
@@ -71,6 +75,7 @@ void draw() {
     textAlign(CENTER, CENTER);
     rectMode(CENTER);
     textSize(15);
+
     if (player.shootType == 1) {
       if (player.ammo > 0) {
         if (mouseY < 25 || mouseX < 25) {
@@ -84,7 +89,7 @@ void draw() {
           fill(0);
           text(player.ammo, mouseX - 23, mouseY - 22);
         }
-      } else if (player.shootType == 2) {
+      } else {
         if (mouseY < 25 || mouseX < 70) {
           fill(190, 200);
           rect(mouseX + 50, mouseY + 23, 82, 19, 25);
@@ -156,7 +161,7 @@ void mousePressed() {
         if (player.ammo > 0) {
           bullets.add(new Bullet(player.x, player.y));
           player.shoot();
-          // laser1.play();
+          // shoot1.play();
         }
       }
 
@@ -164,6 +169,7 @@ void mousePressed() {
         if (player.rocketAmmo > 0) {
           rockets.add(new Rocket(player.x, player.y));
           player.shoot();
+          // shoot2.play();
         }
       }
     }
@@ -314,14 +320,13 @@ void startScreen() {
   fill(255);
   textSize(50);
   text("Defend the base", width/5, height/2);
-  textSize(20);
-  text("Press any key to begin", width/2.5, height/1.9);
 
   textSize(35);
   text("Controls", width/7, height/1.4);
   text("Settings", width/1.5, height/1.4);
 
   textSize(20);
+  text("Press any key to begin", width/2.5, height/1.9);
   text("WASD or arrow keys for movement", width/5.5, height/1.35);
   text("1 to switch to bullets", width/5.5, height/1.31);
   text("2 to switch to rockets", width/5.5, height/1.27);
@@ -347,6 +352,19 @@ void startScreen() {
     text("On", 682, 763);
   } else {
     text("Off", 682, 763);
+  }
+
+  textSize(30);
+  if (mouseX > 612 && mouseX < 777 && mouseY > 671 && mouseY < 701) {
+      text("Legacy movement is simpler than the standard movement. /n Applies to the enemies movement too", 700, 850);
+  }
+
+  if (mouseX > 612 && mouseX < 692 && mouseY > 707 && mouseY < 737) {
+      text("Disabling particles will improve performance", 700, 850);
+  }
+
+  if (mouseX > 612 && mouseX < 677 && mouseY > 742 && mouseY < 772) {
+      text("Disabling sounds will disable every single sound", 700, 850);
   }
 }
 
