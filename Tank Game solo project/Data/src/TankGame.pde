@@ -4,11 +4,16 @@ HeavyEnemy H_enemy;
 LightEnemy L_enemy;
 Heal healthPack;
 
+// Get the processing video library plugin for this code to run
+
+// import processing.video.*;
+// Movie particleSample, legacyMovementSample, detailsSample;
+
 import processing.sound.*;
 // SoundFile shoot1, shoot2, shoot3, idle, move;
 
 PImage mouse, reloadMouse;
-int tankOffScreen, ax, ay;
+int tankOffScreen, ax, ay, detailLevel;
 boolean play, pause, legacyMovement, particles, sound;
 
 ArrayList<HeavyEnemy> H_enemies = new ArrayList<HeavyEnemy>();
@@ -33,6 +38,7 @@ void setup() {
   legacyMovement = false;
   particles = true;
   sound = true;
+  detailLevel = 3;
 
   ax = mouseX + 15;
   ay = mouseY + 15;
@@ -42,6 +48,10 @@ void setup() {
   // shoot3 = new SoundFile(this, "shoot3.mp3");
   // idle = new SoundFile(this, "idle.mp3");
   // move = new SoundFile(this, "move.mp3");
+
+  // particleSample = new Movie(this, "particle.mp4");
+  // legacyMovementSample = new Movie(this, "legacyMovement.mp4");
+  // detailsSample = new Movie(this, "details.mp4");
 }
 
 void draw() {
@@ -196,6 +206,13 @@ void mousePressed() {
       } else {
         sound = false;
       }
+    } 
+    
+    if (mouseX > 612 && mouseX < 682 && mouseY > 765 && mouseY < 780) {
+      detailLevel -= 1;
+      if (detailLevel < 1) {
+        detailLevel = 3;
+      }
     }
   }
 }
@@ -332,6 +349,7 @@ void startScreen() {
   rect(612, 671, 165, 30, 15);
   rect(612, 707, 80, 30, 15);
   rect(612, 742, 65, 30, 15);
+  rect(612, 765, 70, 30, 15);
 
   fill(255);
   textSize(50);
@@ -370,13 +388,22 @@ void startScreen() {
     text("Off", 682, 763);
   }
 
+  text("Details", 617, 788);
+  if (detailLevel == 3) {
+    text("High", 687, 788);
+  } else if (detailLevel == 2) {
+    text("Medium", 687, 788);
+  } else if (detailLevel == 1) {
+    text("Low", 687, 788);
+  }
+
   textSize(30);
   if (mouseX > 612 && mouseX < 777 && mouseY > 671 && mouseY < 701) {
-      text("Legacy movement is simpler than the standard movement. /n Applies to the enemies movement too", 700, 850);
+      text("Legacy movement is a simpler version of movement. /n This movement was used for the prototype of this game. /n Applies to the enemies movement too", 700, 850);
   }
 
   if (mouseX > 612 && mouseX < 692 && mouseY > 707 && mouseY < 737) {
-      text("Disabling particles will improve performance", 700, 850);
+      text("Disabling particles will partially improve performance", 700, 850);
   }
 
   if (mouseX > 612 && mouseX < 677 && mouseY > 742 && mouseY < 772) {
