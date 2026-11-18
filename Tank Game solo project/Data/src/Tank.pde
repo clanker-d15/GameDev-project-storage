@@ -10,9 +10,12 @@ class Tank {
   boolean movingBackward = false;
   boolean movingLeft = false;
   boolean movingRight = false;
+  boolean turningLeft = false;
+  boolean turningRight = false;
 
-// Note: make the movement smoother. Make it take time to stop and speed up again. (Medium Priority) Also fix the rocket so it comes out of the tank turret's rocket launcher. (High Priority)
-// Also make the rockets and bullets models look better. (High Priority) Revamp the movement to be more realistic (Lower Priority)
+// Make the movement smoother. Make it take time to stop and speed up again. (Medium Priority) 
+// Fix the rocket so it comes out of the tank turret's rocket launcher. (High Priority)
+// Revamp the movement to be more realistic (Lower Priority)
 
   // Constructor
   Tank() {
@@ -86,6 +89,12 @@ class Tank {
         shootDelay -= 1;
       }
       
+      if (movingForward || movingBackward || movingLeft || movingRight == true) {
+        // move.play();
+      } else {
+        // idle.play();
+      }
+      
       // Movement
       //if (TankGame.legacyMovement == true) {
       if (movingForward) {
@@ -135,7 +144,18 @@ class Tank {
       } else {
         speed = 3;
       }
-      //}
+      // } else {
+      // if (movingForward) {
+      // x += cos(angle) * speed;
+      // y += sin(angle) * speed;
+      // }
+      // if (movingBackward) {
+      //  x -= cos(angle) * speed;
+      //  y -= sin(angle) * speed;
+      // }
+      // if (turningLeft) angle -= rotationSpeed;
+      // if (turningRight) angle += rotationSpeed;
+      // }
 
 
       // Turret rotation
