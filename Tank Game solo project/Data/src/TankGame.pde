@@ -226,12 +226,20 @@ void keyPressed() {
   if (play == true) {
     if (key == 'w') player.movingForward = true;
     if (key == 's') player.movingBackward = true;
-    if (key == 'a') player.movingLeft = true;
-    if (key == 'd') player.movingRight = true;
     if (keyCode == 38) player.movingForward = true;
     if (keyCode == 40) player.movingBackward = true;
-    if (keyCode == 37) player.movingLeft = true;
-    if (keyCode == 39) player.movingRight = true;
+
+    if (legacyMovement == true) {
+      if (key == 'a') player.movingLeft = true;
+      if (key == 'd') player.movingRight = true;
+      if (keyCode == 37) player.movingLeft = true;
+      if (keyCode == 39) player.movingRight = true;
+    } else {
+      if (key == 'a') player.turningLeft = true;
+      if (key == 'd') player.turningRight = true;
+      if (keyCode == 37) player.turningLeft = true;
+      if (keyCode == 39) player.turningRight = true;
+    }
 
     if (keyCode == 49) player.shootType = 1;
     if (keyCode == 50) player.shootType = 2;
@@ -247,12 +255,20 @@ void keyReleased() {
   if (play == true) {
     if (key == 'w') player.movingForward = false;
     if (key == 's') player.movingBackward = false;
-    if (key == 'a') player.movingLeft = false;
-    if (key == 'd') player.movingRight = false;
     if (keyCode == 38) player.movingForward = false;
     if (keyCode == 40) player.movingBackward = false;
-    if (keyCode == 37) player.movingLeft = false;
-    if (keyCode == 39) player.movingRight = false;
+
+    if (legacyMovement == true) {
+      if (key == 'a') player.movingLeft = false;
+      if (key == 'd') player.movingRight = false;
+      if (keyCode == 37) player.movingLeft = false;
+      if (keyCode == 39) player.movingRight = false;
+    } else {
+      if (key == 'a') player.turningLeft = false;
+      if (key == 'd') player.turningRight = false;
+      if (keyCode == 37) player.turningLeft = false;
+      if (keyCode == 39) player.turningRight = false;
+    }
   }
 }
 
