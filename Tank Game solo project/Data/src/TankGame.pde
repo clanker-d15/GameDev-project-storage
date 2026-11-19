@@ -4,10 +4,8 @@ HeavyEnemy H_enemy;
 LightEnemy L_enemy;
 Heal healthPack;
 
-// Get the processing video library plugin for this code to run
-
-// import processing.video.*;
-// Movie particleSample, legacyMovementSample, detailsSample;
+//import processing.video.*;
+//Movie particleSample, legacyMovementSample, detailsSample;
 
 import processing.sound.*;
 SoundFile shoot1, shoot2, shoot3, idle, move;
@@ -43,15 +41,15 @@ void setup() {
   ax = mouseX + 15;
   ay = mouseY + 15;
 
-  // shoot1 = new SoundFile(this, "shoot1.mp3");
-  // shoot2 = new SoundFile(this, "shoot2.mp3");
-  // shoot3 = new SoundFile(this, "shoot3.mp3");
-  // idle = new SoundFile(this, "idle.mp3");
-  // move = new SoundFile(this, "move.mp3");
+  shoot1 = new SoundFile(this, "");
+  shoot2 = new SoundFile(this, "");
+  shoot3 = new SoundFile(this, "");
+  idle = new SoundFile(this, "");
+  move = new SoundFile(this, "");
 
-  // particleSample = new Movie(this, "particle.mp4");
-  // legacyMovementSample = new Movie(this, "legacyMovement.mp4");
-  // detailsSample = new Movie(this, "details.mp4");
+  //particleSample = new Movie(this, "");
+  //legacyMovementSample = new Movie(this, "");
+  //detailsSample = new Movie(this, "");
 }
 
 void draw() {
@@ -352,20 +350,20 @@ void startScreen() {
   rect(612, 776, 70, 30, 15);
 
   fill(255);
-  textSize(50);
+  textSize(55);
   text("Defend the base", width/5, height/2);
 
-  textSize(35);
-  text("Controls", width/7, height/1.4);
-  text("Settings", width/1.5, height/1.4);
+  textSize(45);
+  text("Controls", width/7, 655);
+  text("Settings", width/1.6, 655);
 
   textSize(20);
-  text("Press any key to begin", width/2.5, height/1.9);
-  text("WASD or arrow keys for movement", width/5.5, height/1.35);
-  text("1 to switch to bullets", width/5.5, height/1.31);
-  text("2 to switch to rockets", width/5.5, height/1.27);
-  text("Left-click to shoot", width/5.5, height/1.23);
-  text("Scroll to switch ammo type", width/5.5, height/1.19);
+  text("Press any key to begin", width/2.5, 490);
+  text("WASD or arrow keys for movement", width/5.5, 680);
+  text("1 to switch to bullets", width/5.5, 705);
+  text("2 to switch to rockets", width/5.5, 730);
+  text("Left-click to shoot", width/5.5, 755);
+  text("Scroll to switch ammo type", width/5.5, 780);
 
   text("Legacy movement", 617, 693);
   if (legacyMovement == true) {
