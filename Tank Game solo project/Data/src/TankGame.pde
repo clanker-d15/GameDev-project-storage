@@ -29,6 +29,7 @@ void setup() {
   healthPack = new Heal();
   mouse = loadImage("crossHair.png");
   reloadMouse = loadImage("ReloadCrosshair.png");
+  city1 = loadImage("");
   H_enemies.add(new HeavyEnemy(int(random(width)), -60));
   L_enemies.add(new LightEnemy(int(random(width)), -60));
   play = false;
