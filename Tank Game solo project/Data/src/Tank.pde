@@ -96,7 +96,7 @@ class Tank {
       }
       
       // Movement
-      //if (TankGame.legacyMovement == true) {
+      if (TankGame.legacyMovement == true) {
       if (movingForward) {
         y -= speed;
         angle = -HALF_PI;
@@ -144,18 +144,18 @@ class Tank {
       } else {
         speed = 3;
       }
-      // } else {
-      // if (movingForward) {
-      // x += cos(angle) * speed;
-      // y += sin(angle) * speed;
-      // }
-      // if (movingBackward) {
-      //  x -= cos(angle) * speed;
-      //  y -= sin(angle) * speed;
-      // }
-      // if (turningLeft) angle -= rotationSpeed;
-      // if (turningRight) angle += rotationSpeed;
-      // }
+      } else {
+      if (movingForward) {
+        x += cos(angle) * speed;
+        y += sin(angle) * speed;
+      }
+      if (movingBackward) {
+        x -= cos(angle) * speed;
+        y -= sin(angle) * speed;
+      }
+      if (turningLeft) angle -= rotationSpeed;
+      if (turningRight) angle += rotationSpeed;
+      }
 
 
       // Turret rotation
