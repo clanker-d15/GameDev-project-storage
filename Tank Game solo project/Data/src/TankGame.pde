@@ -206,9 +206,9 @@ void mousePressed() {
       } else {
         sound = false;
       }
-    } 
-    
-    if (mouseX > 612 && mouseX < 682 && mouseY > 765 && mouseY < 780) {
+    }
+
+    if (mouseX > 612 && mouseX < 682 && mouseY > 776 && mouseY < 806) {
       detailLevel -= 1;
       if (detailLevel < 1) {
         detailLevel = 3;
@@ -349,7 +349,7 @@ void startScreen() {
   rect(612, 671, 165, 30, 15);
   rect(612, 707, 80, 30, 15);
   rect(612, 742, 65, 30, 15);
-  rect(612, 765, 70, 30, 15);
+  rect(612, 776, 70, 30, 15);
 
   fill(255);
   textSize(50);
@@ -388,26 +388,30 @@ void startScreen() {
     text("Off", 682, 763);
   }
 
-  text("Details", 617, 788);
+  text("Details", 617, 798);
   if (detailLevel == 3) {
-    text("High", 687, 788);
+    text("High", 687, 798);
   } else if (detailLevel == 2) {
-    text("Medium", 687, 788);
+    text("Medium", 687, 798);
   } else if (detailLevel == 1) {
-    text("Low", 687, 788);
+    text("Low", 687, 798);
   }
 
-  textSize(30);
+  textSize(15);
   if (mouseX > 612 && mouseX < 777 && mouseY > 671 && mouseY < 701) {
-      text("Legacy movement is a simpler version of movement. /n This movement was used for the prototype of this game. /n Applies to the enemies movement too", 700, 850);
+    text("Legacy movement is a simpler version of movement.\nThis movement was used for the prototype of this game.\nApplies to the enemies movement too", 550, 850);
   }
 
   if (mouseX > 612 && mouseX < 692 && mouseY > 707 && mouseY < 737) {
-      text("Disabling particles will partially improve performance", 700, 850);
+    text("Disabling particles will partially improve performance", 550, 850);
   }
 
   if (mouseX > 612 && mouseX < 677 && mouseY > 742 && mouseY < 772) {
-      text("Disabling sounds will disable every single sound", 700, 850);
+    text("Disabling sounds will disable every single sound", 550, 850);
+  }
+
+  if (mouseX > 612 && mouseX < 682 && mouseY > 776 && mouseY < 806) {
+    text("How detailed you want the world to be. \nLower quality will partially improve performance", 550, 850);
   }
 }
 
