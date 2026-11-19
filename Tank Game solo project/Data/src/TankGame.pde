@@ -61,6 +61,7 @@ void draw() {
   if (play == true) {
     noCursor();
     background(255);
+    //image(city1, 0, 0);
 
     // add enemies and health packs
 
