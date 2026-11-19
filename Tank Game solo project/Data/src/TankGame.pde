@@ -292,10 +292,8 @@ void infoPanel() {
   rectMode(CENTER);
   stroke(10);
   strokeWeight(2);
-  fill(127, 127);
-  rect(73, 855, 137, 75, 13);
-  textSize(25);
-
+  fill(100, 100);
+  rect(73, 855, 137, 75, 10);
 
   if (player.health > 750) {
     fill(255);
@@ -307,8 +305,8 @@ void infoPanel() {
     fill(#D82A2A);
   }
 
+  textSize(25);
   text("Health: " + player.health, 73, 827);
-
 
   if (player.ammo == 0) {
     fill(255);
@@ -350,7 +348,7 @@ void startScreen() {
   rect(612, 776, 70, 30, 5);
 
   fill(255);
-  textSize(55);
+  textSize(60);
   text("Defend the base", width/5, height/2);
 
   textSize(45);
@@ -358,7 +356,7 @@ void startScreen() {
   text("Settings", width/1.6, 655);
 
   textSize(20);
-  text("Press any key to begin", width/2.5, 490);
+  text("Press any key to begin", width/2.5, 495);
   text("WASD or arrow keys for movement", width/5.5, 680);
   text("1 to switch to bullets", width/5.5, 705);
   text("2 to switch to rockets", width/5.5, 730);
