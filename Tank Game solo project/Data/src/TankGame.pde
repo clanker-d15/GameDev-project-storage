@@ -10,8 +10,8 @@ Heal healthPack;
 import processing.sound.*;
 SoundFile shoot1, shoot2, shoot3, idle, move;
 
-PImage mouse, reloadMouse, city1;
-int tankOffScreen, ax, ay, detailLevel;
+PImage mouse, reloadMouse, plazaIcon, plaza, city1Icon, city1;
+int tankOffScreen, ax, ay, detailLevel, menuScreen;
 boolean play, pause, legacyMovement, particles, sound;
 
 ArrayList<HeavyEnemy> H_enemies = new ArrayList<HeavyEnemy>();
@@ -29,6 +29,9 @@ void setup() {
   healthPack = new Heal();
   mouse = loadImage("crossHair.png");
   reloadMouse = loadImage("ReloadCrosshair.png");
+  plazaIcon = loadImage("");
+  plaza = loadImage("");
+  city1Icon = loadImage("");
   city1 = loadImage("");
   H_enemies.add(new HeavyEnemy(int(random(width)), -60));
   L_enemies.add(new LightEnemy(int(random(width)), -60));
@@ -38,6 +41,7 @@ void setup() {
   particles = true;
   sound = true;
   detailLevel = 3;
+  menuScreen = 1;
 
   ax = mouseX + 15;
   ay = mouseY + 15;
@@ -61,7 +65,6 @@ void draw() {
   if (play == true) {
     noCursor();
     background(255);
-    //image(city1, 0, 0);
 
     // add enemies and health packs
 
@@ -184,6 +187,16 @@ void mousePressed() {
       }
     }
   } else if (play == false) {
+    if (menuScreen == 1) {
+      if (mouseX > 612 && mouseX < 777 && mouseY > 671 && mouseY < 701) {
+        menuScreen = 2;
+    }
+    if (mouseX > 612 && mouseX < 692 && mouseY > 707 && mouseY < 737) {
+        menuScreen = 3;
+    }
+
+    }
+    if (menuScreen == 2) {
     if (mouseX > 612 && mouseX < 777 && mouseY > 671 && mouseY < 701) {
       if (legacyMovement == false) {
         legacyMovement = true;
@@ -215,6 +228,7 @@ void mousePressed() {
       }
     }
   }
+  }
 }
 
 // Ammo switch
@@ -237,7 +251,9 @@ void mouseWheel (MouseEvent event) {
 // Movement
 void keyPressed() {
   if (play == false) {
-    if (keyPressed) play = true;
+    if (menuScreen == 1) {
+      if (keyPressed) play = true;
+    }
   }
 
   if (play == true) {
@@ -263,6 +279,14 @@ void keyPressed() {
 
     if (key == 'p') {
       pause();
+    }
+
+    if (keyCode == 27) {
+      if (play == false) {
+        menuScreen = 1;
+      } else if (play == true) {
+        play = false;
+      }
     }
   }
 }
@@ -342,7 +366,21 @@ void infoPanel() {
 
 void startScreen() {
   background(0);
+  fill(100);
+  rect(612, 671, 165, 30, 5);
+  rect(612, 707, 80, 30, 5);
 
+  fill(255);
+  textSize(60);
+  text("Defend the base", width/5, height/2);
+
+  textSize(20);
+  text("Press any key to begin", width/2.5, 495);
+  text("Settings", 617, 693);
+  text("Controls", 617, 728);
+}
+
+void settings() {
   fill(100);
   rect(612, 671, 165, 30, 5);
   rect(612, 707, 80, 30, 5);
@@ -350,21 +388,10 @@ void startScreen() {
   rect(612, 776, 70, 30, 5);
 
   fill(255);
-  textSize(60);
-  text("Defend the base", width/5, height/2);
-
   textSize(45);
-  text("Controls", width/7, 655);
   text("Settings", width/1.6, 655);
 
   textSize(20);
-  text("Press any key to begin", width/2.5, 495);
-  text("WASD or arrow keys for movement", width/5.5, 680);
-  text("1 to switch to bullets", width/5.5, 705);
-  text("2 to switch to rockets", width/5.5, 730);
-  text("Left-click to shoot", width/5.5, 755);
-  text("Scroll to switch ammo type", width/5.5, 780);
-
   text("Legacy movement", 617, 693);
   if (legacyMovement == true) {
     text("On", width/1.18, 693);
@@ -411,6 +438,19 @@ void startScreen() {
   if (mouseX > 612 && mouseX < 682 && mouseY > 776 && mouseY < 806) {
     text("How detailed you want the world to be. \nLower quality will partially improve performance", 550, 850);
   }
+}
+
+void controls() {
+  fill(255);
+  textSize(45);
+  text("Controls", width/7, 655);
+
+  textSize(20);
+  text("WASD or arrow keys for movement", width/5.5, 680);
+  text("1 to switch to bullets", width/5.5, 705);
+  text("2 to switch to rockets", width/5.5, 730);
+  text("Left-click to shoot", width/5.5, 755);
+  text("Scroll to switch ammo type", width/5.5, 780);
 }
 
 void gameOver() {
