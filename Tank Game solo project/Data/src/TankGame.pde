@@ -1,4 +1,4 @@
-// Franklin Roth | 17 Sept 2026 | TankGame
+// Franklin Roth | TankGame
 Tank player;
 HeavyEnemy H_enemy;
 LightEnemy L_enemy;
@@ -60,7 +60,7 @@ void setup() {
 void draw() {
   if (play == false) {
     background(0);
-    
+
     if (menuScreen == 1) {
       startScreen();
     } else if (menuScreen == 2) {
@@ -84,11 +84,18 @@ void draw() {
     if (player.health<1) {
       gameOver();
     }
-
-    if (player.ammo > 0) {
-      image(mouse, mouseX, mouseY);
+    if (player.shootType == 1) {
+      if (player.ammo > 0) {
+        image(mouse, mouseX, mouseY);
+      } else {
+        image(reloadMouse, mouseX, mouseY);
+      }
     } else {
-      image(reloadMouse, mouseX, mouseY);
+      if (player.rocketAmmo > 0) {
+        image(mouse, mouseX, mouseY);
+      } else {
+        image(reloadMouse, mouseX, mouseY);
+      }
     }
 
     // Ammo counter next to crosshair
@@ -194,26 +201,26 @@ void mousePressed() {
     } else {
       // Menu navigation and settings clicks
       if (menuScreen == 1) {
-        if (mouseX > 612 && mouseX < 692 && mouseY > 671 && mouseY < 701) {
+        if (mouseX > 198 && mouseX < 338 && mouseY > 768 && mouseY < 811) {
           menuScreen = 2;
         }
-        if (mouseX > 612 && mouseX < 692 && mouseY > 707 && mouseY < 737) {
+        if (mouseX > 198 && mouseX < 346 && mouseY > 817 && mouseY < 857) {
           menuScreen = 3;
         }
       } else if (menuScreen == 2) {
-        if (mouseX > 612 && mouseX < 777 && mouseY > 671 && mouseY < 701) {
+        if (mouseX > 200 && mouseX < 400 && mouseY > 240 && mouseY < 270) {
           legacyMovement = !legacyMovement;
         }
 
-        if (mouseX > 612 && mouseX < 692 && mouseY > 707 && mouseY < 737) {
+        if (mouseX > 200 && mouseX < 300 && mouseY > 280 && mouseY < 310) {
           particles = !particles;
         }
 
-        if (mouseX > 612 && mouseX < 677 && mouseY > 742 && mouseY < 772) {
+        if (mouseX > 200 && mouseX < 277 && mouseY > 320 && mouseY < 350) {
           sound = !sound;
         }
 
-        if (mouseX > 612 && mouseX < 682 && mouseY > 776 && mouseY < 806) {
+        if (mouseX > 200 && mouseX < 280 && mouseY > 360 && mouseY < 390) {
           detailLevel -= 1;
           if (detailLevel < 1) {
             detailLevel = 3;
@@ -227,20 +234,20 @@ void mousePressed() {
 // Ammo switch
 void mouseWheel (MouseEvent event) {
   if (play == true) {
-  float e = event.getCount();
+    float e = event.getCount();
 
-  if (e > 0) {
-    if (player.shootType == 1) {
-      player.shootType = 2;
-    } else {
+    if (e > 0) {
+      if (player.shootType == 1) {
+        player.shootType = 2;
+      } else {
+        player.shootType = 1;
+      }
+    } else if (player.shootType == 2) {
       player.shootType = 1;
+    } else {
+      player.shootType = 2;
     }
-  } else if (player.shootType == 2) {
-    player.shootType = 1;
-  } else {
-    player.shootType = 2;
   }
-}
 }
 
 // Movement
@@ -276,7 +283,7 @@ void keyPressed() {
 
     if (key == 'p') {
       pause();
-    } 
+    }
   }
 }
 
@@ -308,47 +315,20 @@ void infoPanel() {
   stroke(10);
   strokeWeight(2);
   fill(100, 100);
-  rect(73, 855, 137, 75, 10);
+  rect(75, 880, 137, 70, 10);
 
-  if (player.health > 750) {
-    fill(255);
-  }
-  if (player.health < 750) {
-    fill(#E5AC2E);
-  }
-  if (player.health < 300) {
-    fill(#D82A2A);
-  }
-
+  fill(255);
   textSize(25);
-  text("Health: " + player.health, 73, 827);
-
-  if (player.ammo == 0) {
-    fill(255);
-    text("Reloading...", 73, 847);
+  text("Health: " + player.health, 75, 860);
+  if (player.ammo > 0) {
+    text("Ammo: " + player.ammo, 65, 880);
   } else {
-    if (player.ammo > 8) {
-      fill(255);
-      text("Ammo: " + player.ammo, 65, 847);
-    }
-    if (player.ammo < 9) {
-      fill(#FAE0C0);
-      text("Ammo: " + player.ammo, 65, 847);
-    }
-    if (player.ammo < 4) {
-      fill(#FAC0C0);
-      text("Ammo: " + player.ammo, 65, 847);
-    }
+    text("Reloading...", 72, 880);
   }
-
-  if (player.rocketAmmo == 0) {
-    fill(255);
-    text("Reloading...", 73, 868);
+  if (player.rocketAmmo > 0) {
+    text("Rockets: " + player.rocketAmmo, 65, 900);
   } else {
-    if (player.rocketAmmo > 0) {
-      fill(255);
-      text("Rockets: " + player.rocketAmmo, 65, 868);
-    }
+    text("Reloading...", 72, 900);
   }
 }
 
@@ -357,92 +337,103 @@ void startScreen() {
   background(0);
   menuScreen = 1;
   fill(100);
-  rect(612, 671, 80, 30, 5);
-  rect(612, 707, 80, 30, 5);
+  rect(198, 768, 140, 43, 5);
+  rect(198, 817, 148, 40, 5);
+  rect(198, 863, 125, 40, 5);
 
   fill(255);
-  textSize(60);
-  text("Defend the base", width/5, height/2);
+  textSize(90);
+  text("Defend the base", 85, 200);
 
-  textSize(20);
-  text("Press ENTER to begin", width/2.5, 495);
-  text("Settings", 617, 693);
-  text("Controls", 617, 728);
+  textSize(40);
+  text("Press ENTER to begin", 205, 245);
+  text("Settings", 200, 800);
+  text("Controls", 200, 850);
+  text("Credits", 200, 896);
+
+  //image(plazaIcon, 300, 400);
+  //image(city1Icon, 500, 400);
 }
 
 void settingsScreen() {
   menuScreen = 2;
   fill(100);
-  rect(612, 671, 165, 30, 5);
-  rect(612, 707, 80, 30, 5);
-  rect(612, 742, 65, 30, 5);
-  rect(612, 776, 70, 30, 5);
+  rect(200, 240, 200, 30, 5);
+  rect(200, 280, 100, 30, 5);
+  rect(200, 320, 77, 30, 5);
+  rect(200, 360, 80, 30, 5);
 
   fill(255);
-  textSize(45);
-  text("Settings", width/1.6, 655);
+  textSize(75);
+  text("Settings", 132, 200);
+
+  textSize(25);
+  text("Press E to go back", 50, 50);
+
+  text("Legacy movement", 205, 263);
+  if (legacyMovement == true) {
+    text("On", 410, 263);
+  } else {
+    text("Off", 410, 263);
+  }
+
+  text("Particles", 205, 305);
+  if (particles == true) {
+    text("On", 310, 305);
+  } else {
+    text("Off", 310, 305);
+  }
+
+  text("Sound", 205, 345);
+  if (sound == true) {
+    text("On", 285, 345);
+  } else {
+    text("Off", 285, 345);
+  }
+
+  text("Details", 205, 385);
+  if (detailLevel == 3) {
+    text("High", 290, 385);
+  } else if (detailLevel == 2) {
+    text("Medium", 290, 385);
+  } else if (detailLevel == 1) {
+    text("Low", 290, 385);
+  }
 
   textSize(20);
-  text("Legacy movement", 617, 693);
-  if (legacyMovement == true) {
-    text("On", width/1.18, 693);
-  } else {
-    text("Off", width/1.18, 693);
+  if (mouseX > 200 && mouseX < 400 && mouseY > 240 && mouseY < 270) {
+    text("Legacy movement is a simpler version of movement.\nThis movement was used for the prototype of this game.\nApplies to the enemies movement too", 430, 320);
   }
 
-  text("Particles", 617, 728);
-  if (particles == true) {
-    text("On", 697, 728);
-  } else {
-    text("Off", 697, 728);
+  if (mouseX > 200 && mouseX < 300 && mouseY > 280 && mouseY < 310) {
+    text("Disabling particles will partially improve performance", 430, 320);
   }
 
-  text("Sound", 617, 763);
-  if (sound == true) {
-    text("On", 682, 763);
-  } else {
-    text("Off", 682, 763);
+  if (mouseX > 200 && mouseX < 277 && mouseY > 320 && mouseY < 350) {
+    text("Disabling sounds will disable every single sound", 430, 320);
   }
 
-  text("Details", 617, 798);
-  if (detailLevel == 3) {
-    text("High", 687, 798);
-  } else if (detailLevel == 2) {
-    text("Medium", 687, 798);
-  } else if (detailLevel == 1) {
-    text("Low", 687, 798);
-  }
-
-  textSize(15);
-  if (mouseX > 612 && mouseX < 777 && mouseY > 671 && mouseY < 701) {
-    text("Legacy movement is a simpler version of movement.\nThis movement was used for the prototype of this game.\nApplies to the enemies movement too", 550, 850);
-  }
-
-  if (mouseX > 612 && mouseX < 692 && mouseY > 707 && mouseY < 737) {
-    text("Disabling particles will partially improve performance", 550, 850);
-  }
-
-  if (mouseX > 612 && mouseX < 677 && mouseY > 742 && mouseY < 772) {
-    text("Disabling sounds will disable every single sound", 550, 850);
-  }
-
-  if (mouseX > 612 && mouseX < 682 && mouseY > 776 && mouseY < 806) {
-    text("How detailed you want the world to be. \nLower quality will partially improve performance", 550, 850);
+  if (mouseX > 200 && mouseX < 280 && mouseY > 360 && mouseY < 390) {
+    text("How detailed you want the world to be. \nLower quality will partially improve performance", 430, 320);
   }
 }
 
 void controlsScreen() {
   menuScreen = 3;
   fill(255);
-  textSize(45);
-  text("Controls", width/7, 655);
+  textSize(75);
+  text("Controls", 132, 200);
 
-  textSize(20);
-  text("WASD or arrow keys for movement", width/5.5, 680);
-  text("1 to switch to bullets", width/5.5, 705);
-  text("2 to switch to rockets", width/5.5, 730);
-  text("Left-click to shoot", width/5.5, 755);
-  text("Scroll to switch ammo type", width/5.5, 780);
+  textSize(30);
+  text("-WASD or arrow keys for movement", 200, 240);
+  text("-1 to switch to bullets", 200, 280);
+  text("-2 to switch to rockets", 200, 320);
+  text("-Left-click to shoot", 200, 360);
+  text("-Scroll to switch ammo type", 200, 400);
+  text("-Press P to pause the game", 200, 440);
+
+  textSize(25);
+  text("Press E to go back", 50, 50);
 }
 
 void gameOver() {
