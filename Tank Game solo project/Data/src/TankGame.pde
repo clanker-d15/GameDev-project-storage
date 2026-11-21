@@ -190,44 +190,43 @@ void mousePressed() {
     if (menuScreen == 1) {
       if (mouseX > 612 && mouseX < 777 && mouseY > 671 && mouseY < 701) {
         menuScreen = 2;
-    }
-    if (mouseX > 612 && mouseX < 692 && mouseY > 707 && mouseY < 737) {
+      }
+      if (mouseX > 612 && mouseX < 692 && mouseY > 707 && mouseY < 737) {
         menuScreen = 3;
-    }
-
+      }
     }
     if (menuScreen == 2) {
-    if (mouseX > 612 && mouseX < 777 && mouseY > 671 && mouseY < 701) {
-      if (legacyMovement == false) {
-        legacyMovement = true;
-      } else {
-        legacyMovement = false;
+      if (mouseX > 612 && mouseX < 777 && mouseY > 671 && mouseY < 701) {
+        if (legacyMovement == false) {
+          legacyMovement = true;
+        } else {
+          legacyMovement = false;
+        }
       }
-    }
 
-    if (mouseX > 612 && mouseX < 692 && mouseY > 707 && mouseY < 737) {
-      if (particles == false) {
-        particles = true;
-      } else {
-        particles = false;
+      if (mouseX > 612 && mouseX < 692 && mouseY > 707 && mouseY < 737) {
+        if (particles == false) {
+          particles = true;
+        } else {
+          particles = false;
+        }
       }
-    }
 
-    if (mouseX > 612 && mouseX < 677 && mouseY > 742 && mouseY < 772) {
-      if (sound == false) {
-        sound = true;
-      } else {
-        sound = false;
+      if (mouseX > 612 && mouseX < 677 && mouseY > 742 && mouseY < 772) {
+        if (sound == false) {
+          sound = true;
+        } else {
+          sound = false;
+        }
       }
-    }
 
-    if (mouseX > 612 && mouseX < 682 && mouseY > 776 && mouseY < 806) {
-      detailLevel -= 1;
-      if (detailLevel < 1) {
-        detailLevel = 3;
+      if (mouseX > 612 && mouseX < 682 && mouseY > 776 && mouseY < 806) {
+        detailLevel -= 1;
+        if (detailLevel < 1) {
+          detailLevel = 3;
+        }
       }
     }
-  }
   }
 }
 
@@ -380,7 +379,7 @@ void startScreen() {
   text("Controls", 617, 728);
 }
 
-void settings() {
+void settingsScreen() {
   fill(100);
   rect(612, 671, 165, 30, 5);
   rect(612, 707, 80, 30, 5);
@@ -440,7 +439,7 @@ void settings() {
   }
 }
 
-void controls() {
+void controlsScreen() {
   fill(255);
   textSize(45);
   text("Controls", width/7, 655);
