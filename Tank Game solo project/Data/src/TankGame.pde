@@ -59,7 +59,15 @@ void setup() {
 
 void draw() {
   if (play == false) {
-    startScreen();
+    background(0);
+    
+    if (menuScreen == 1) {
+      startScreen();
+    } else if (menuScreen == 2) {
+      settingsScreen();
+    } else if (menuScreen == 3) {
+      controlsScreen();
+    }
   }
 
   if (play == true) {
@@ -77,7 +85,6 @@ void draw() {
       gameOver();
     }
 
-    // Crosshair
     if (player.ammo > 0) {
       image(mouse, mouseX, mouseY);
     } else {
@@ -166,64 +173,51 @@ void draw() {
   }
 }
 
-// Shoot
 void mousePressed() {
-  if (play == true && pause == false) {
-    if (mouseButton == LEFT) {
-      if (player.shootType == 1) {
-        if (player.ammo > 0) {
-          bullets.add(new Bullet(player.x, player.y));
-          player.shoot();
-          // shoot1.play();
+  if (mouseButton == LEFT) {
+    if (play == true) {
+      if (pause == false) {
+        if (player.shootType == 1) {
+          if (player.ammo > 0) {
+            bullets.add(new Bullet(player.x, player.y));
+            player.shoot();
+            // shoot1.play();
+          }
+        } else if (player.shootType == 2) {
+          if (player.rocketAmmo > 0) {
+            rockets.add(new Rocket(player.x, player.y));
+            player.shoot();
+            // shoot2.play();
+          }
         }
       }
+    } else {
+      // Menu navigation and settings clicks
+      if (menuScreen == 1) {
+        if (mouseX > 612 && mouseX < 692 && mouseY > 671 && mouseY < 701) {
+          menuScreen = 2;
+        }
+        if (mouseX > 612 && mouseX < 692 && mouseY > 707 && mouseY < 737) {
+          menuScreen = 3;
+        }
+      } else if (menuScreen == 2) {
+        if (mouseX > 612 && mouseX < 777 && mouseY > 671 && mouseY < 701) {
+          legacyMovement = !legacyMovement;
+        }
 
-      if (player.shootType == 2) {
-        if (player.rocketAmmo > 0) {
-          rockets.add(new Rocket(player.x, player.y));
-          player.shoot();
-          // shoot2.play();
+        if (mouseX > 612 && mouseX < 692 && mouseY > 707 && mouseY < 737) {
+          particles = !particles;
         }
-      }
-    }
-  } else if (play == false) {
-    if (menuScreen == 1) {
-      if (mouseX > 612 && mouseX < 777 && mouseY > 671 && mouseY < 701) {
-        menuScreen = 2;
-      }
-      if (mouseX > 612 && mouseX < 692 && mouseY > 707 && mouseY < 737) {
-        menuScreen = 3;
-      }
-    }
-    if (menuScreen == 2) {
-      if (mouseX > 612 && mouseX < 777 && mouseY > 671 && mouseY < 701) {
-        if (legacyMovement == false) {
-          legacyMovement = true;
-        } else {
-          legacyMovement = false;
-        }
-      }
 
-      if (mouseX > 612 && mouseX < 692 && mouseY > 707 && mouseY < 737) {
-        if (particles == false) {
-          particles = true;
-        } else {
-          particles = false;
+        if (mouseX > 612 && mouseX < 677 && mouseY > 742 && mouseY < 772) {
+          sound = !sound;
         }
-      }
 
-      if (mouseX > 612 && mouseX < 677 && mouseY > 742 && mouseY < 772) {
-        if (sound == false) {
-          sound = true;
-        } else {
-          sound = false;
-        }
-      }
-
-      if (mouseX > 612 && mouseX < 682 && mouseY > 776 && mouseY < 806) {
-        detailLevel -= 1;
-        if (detailLevel < 1) {
-          detailLevel = 3;
+        if (mouseX > 612 && mouseX < 682 && mouseY > 776 && mouseY < 806) {
+          detailLevel -= 1;
+          if (detailLevel < 1) {
+            detailLevel = 3;
+          }
         }
       }
     }
@@ -232,6 +226,7 @@ void mousePressed() {
 
 // Ammo switch
 void mouseWheel (MouseEvent event) {
+  if (play == true) {
   float e = event.getCount();
 
   if (e > 0) {
@@ -246,12 +241,15 @@ void mouseWheel (MouseEvent event) {
     player.shootType = 2;
   }
 }
+}
 
 // Movement
 void keyPressed() {
   if (play == false) {
     if (menuScreen == 1) {
-      if (keyPressed) play = true;
+      if (key == ENTER) play = true;
+    } else if (menuScreen != 1) {
+      if (key == 'e') menuScreen = 1;
     }
   }
 
@@ -278,15 +276,7 @@ void keyPressed() {
 
     if (key == 'p') {
       pause();
-    }
-
-    if (keyCode == 27) {
-      if (play == false) {
-        menuScreen = 1;
-      } else if (play == true) {
-        play = false;
-      }
-    }
+    } 
   }
 }
 
@@ -365,8 +355,9 @@ void infoPanel() {
 
 void startScreen() {
   background(0);
+  menuScreen = 1;
   fill(100);
-  rect(612, 671, 165, 30, 5);
+  rect(612, 671, 80, 30, 5);
   rect(612, 707, 80, 30, 5);
 
   fill(255);
@@ -374,12 +365,13 @@ void startScreen() {
   text("Defend the base", width/5, height/2);
 
   textSize(20);
-  text("Press any key to begin", width/2.5, 495);
+  text("Press ENTER to begin", width/2.5, 495);
   text("Settings", 617, 693);
   text("Controls", 617, 728);
 }
 
 void settingsScreen() {
+  menuScreen = 2;
   fill(100);
   rect(612, 671, 165, 30, 5);
   rect(612, 707, 80, 30, 5);
@@ -440,6 +432,7 @@ void settingsScreen() {
 }
 
 void controlsScreen() {
+  menuScreen = 3;
   fill(255);
   textSize(45);
   text("Controls", width/7, 655);
