@@ -10,7 +10,7 @@ Heal healthPack;
 import processing.sound.*;
 SoundFile shoot1, shoot2, shoot3, idle, move;
 
-PImage mouse, reloadMouse, plazaIcon, plaza, city1Icon, city1;
+PImage mouse, reloadMouse, plazaIcon, plaza, city1Icon, city1, menuSmokeTest;
 int tankOffScreen, ax, ay, detailLevel, menuScreen;
 boolean play, pause, legacyMovement, particles, sound;
 
@@ -33,6 +33,7 @@ void setup() {
   plaza = loadImage("");
   city1Icon = loadImage("");
   city1 = loadImage("");
+  menuSmokeTest = loadImage("Smoke.png");
   H_enemies.add(new HeavyEnemy(int(random(width)), -60));
   L_enemies.add(new LightEnemy(int(random(width)), -60));
   play = false;
@@ -67,7 +68,14 @@ void draw() {
       settingsScreen();
     } else if (menuScreen == 3) {
       controlsScreen();
+    } else if (menuScreen == 4) {
+      creditsScreen();
     }
+
+    //Smoke needs to be more transparent and needs to be animated left to right
+    //(Can do that in the engine without downloading a video)
+
+    //image(menuSmokeTest, 0, -300);
   }
 
   if (play == true) {
@@ -206,6 +214,9 @@ void mousePressed() {
         }
         if (mouseX > 198 && mouseX < 346 && mouseY > 817 && mouseY < 857) {
           menuScreen = 3;
+        }
+        if (mouseX > 198 && mouseX < 323 && mouseY > 863 && mouseY < 903) {
+          menuScreen = 4;
         }
       } else if (menuScreen == 2) {
         if (mouseX > 200 && mouseX < 400 && mouseY > 240 && mouseY < 270) {
@@ -448,6 +459,27 @@ void gameOver() {
     text("Rerun the game to restart", 255, 430);
     noLoop();
   }
+}
+
+void creditsScreen() {
+  menuScreen = 4;
+  fill(255);
+  textSize(75);
+  text("Credits", 132, 200);
+
+  textSize(50);
+  text("Creator", 200, 240);
+  text("Inspiration", 200, 330);
+  text("My Socials", 200, 425);
+
+  textSize(30);
+  text("-Complexity", 220, 270);
+  text("-Battlefield Franchise", 220, 365);
+  text("YouTube - Complexity_628", 220, 460);
+  text("Twitter - Complexity_ (Or @P0tat0pratguy)", 220, 530);
+
+  textSize(25);
+  text("Press E to go back", 50, 50);
 }
 
 void pause() {
