@@ -5,10 +5,15 @@ class Bullet {
     this.x = x;
     this.y = y;
     w = 2;
-    h = 21;
+    h = 28;
     speed = 32;
     angle = player.turretAngle;
-    bulletDamage = 30;
+
+    if (bulletType == 1) {
+      bulletDamage = 30;
+    } else if (bulletType == 2) {
+      bulletDamage = 70;
+    }
   }
 
   void update() {
@@ -18,7 +23,7 @@ class Bullet {
 
   void display() {
     fill(#F0A327);
-    noStroke();
+    strokeWeight(0.5);
     rectMode(CENTER);
     pushMatrix();
     translate(x, y);
