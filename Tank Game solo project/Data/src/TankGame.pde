@@ -1,4 +1,4 @@
-// Franklin Roth | TankGame
+// Complexity | TankGame
 Tank player;
 HeavyEnemy H_enemy;
 LightEnemy L_enemy;
@@ -11,7 +11,7 @@ import processing.sound.*;
 SoundFile shoot1, shoot2, shoot3, idle, move;
 
 PImage mouse, reloadMouse, plazaIcon, plaza, city1Icon, city1, menuSmokeTest;
-int tankOffScreen, ax, ay, detailLevel, menuScreen;
+int tankOffScreen, ax, ay, detailLevel, menuScreen, bulletType, rocketType, armorType, map;
 boolean play, pause, legacyMovement, particles, sound;
 
 ArrayList<HeavyEnemy> H_enemies = new ArrayList<HeavyEnemy>();
@@ -33,7 +33,7 @@ void setup() {
   plaza = loadImage("");
   city1Icon = loadImage("");
   city1 = loadImage("");
-  menuSmokeTest = loadImage("Smoke.png");
+  menuSmokeTest = loadImage("");
   H_enemies.add(new HeavyEnemy(int(random(width)), -60));
   L_enemies.add(new LightEnemy(int(random(width)), -60));
   play = false;
@@ -43,6 +43,10 @@ void setup() {
   sound = true;
   detailLevel = 3;
   menuScreen = 1;
+  bulletType = 1;
+  rocketType = 1;
+  armorType = 1;
+  map = 1;
 
   ax = mouseX + 15;
   ay = mouseY + 15;
@@ -81,6 +85,12 @@ void draw() {
   if (play == true) {
     noCursor();
     background(255);
+
+    if (map == 1) {
+      //image(plaza, 0, 0);
+    } else if (map == 2) {
+      //image(city1, 0, 0);
+    }
 
     // add enemies and health packs
 
@@ -352,15 +362,46 @@ void startScreen() {
   rect(198, 817, 148, 40, 5);
   rect(198, 863, 125, 40, 5);
 
+  fill(50);
+  rect(630, 715, 280, 195, 10);
+
   fill(255);
-  textSize(90);
-  text("Defend the base", 85, 200);
+  textSize(100);
+  text("Tank Game", 85, 205);
 
   textSize(40);
   text("Press ENTER to begin", 205, 245);
   text("Settings", 200, 800);
   text("Controls", 200, 850);
   text("Credits", 200, 896);
+  text("Tank Specs", 680, 700);
+  text("Maps:", 140, 315);
+
+  textSize(25);
+  text("Bullet Type:", 640, 745);
+  text("Rocket Type:", 640, 800);
+  text("Armor Type:", 640, 855);
+
+  textSize(20);
+  if (bulletType == 1) {
+    text("Default", 770, 745);
+  } else if (bulletType == 2) {
+    text("Armor Piercing", 770, 745);
+  }
+
+  if (rocketType == 1) {
+    text("Default", 780, 800);
+  } else if (rocketType == 2) {
+    text("Laser Guided", 780, 800);
+  }
+
+  if (armorType == 1) {
+    text("Default", 775, 855);
+  } else if (armorType == 2) {
+    text("Explosive", 775, 855);
+  } else if (armorType == 3) {
+    text("Heavy", 775, 855);
+  }
 
   //image(plazaIcon, 300, 400);
   //image(city1Icon, 500, 400);
