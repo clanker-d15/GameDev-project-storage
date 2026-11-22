@@ -357,13 +357,27 @@ void infoPanel() {
 void startScreen() {
   background(0);
   menuScreen = 1;
+  fill(50);
+  rect(630, 715, 280, 195, 10);
+
   fill(100);
+  //Screens buttons
   rect(198, 768, 140, 43, 5);
   rect(198, 817, 148, 40, 5);
   rect(198, 863, 125, 40, 5);
 
-  fill(50);
-  rect(630, 715, 280, 195, 10);
+  //Bullet buttons
+  rect(645, 753, 75, 25, 5);
+  rect(735, 753, 75, 25, 5);
+
+  //Rocket buttons
+  rect(645, 805, 75, 25, 5);
+  rect(735, 805, 75, 25, 5);
+
+  //Armor buttons
+  rect(645, 860, 75, 40, 5);
+  rect(735, 860, 75, 40, 5);
+  rect(825, 860, 75, 40, 5);
 
   fill(255);
   textSize(100);
