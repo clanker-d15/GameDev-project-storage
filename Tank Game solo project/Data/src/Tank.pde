@@ -13,9 +13,9 @@ class Tank {
   boolean turningLeft = false;
   boolean turningRight = false;
 
-// Make the movement smoother. Make it take time to stop and speed up again. (Medium Priority) 
-// Fix the rocket so it comes out of the tank turret's rocket launcher. (High Priority)
-// Revamp the movement to be more realistic (Lower Priority)
+  // Make the movement smoother. Make it take time to stop and speed up again. (Medium Priority)
+  // Fix the rocket so it comes out of the tank turret's rocket launcher. (High Priority)
+  // Revamp the movement to be more realistic (Lower Priority)
 
   // Constructor
   Tank() {
@@ -27,13 +27,24 @@ class Tank {
     angle = -HALF_PI;
     healDelay = 450;
     turretAngle = HALF_PI;
-    ammo = 12;
+
+    if (bulletType == 1) {
+      ammo = 12;
+      shootDelay = 20;
+    } else if (bulletType == 2) {
+      ammo = 6;
+      shootDelay = 40;
+    }
+
     BulletReloadTime = 200;
     RocketReloadTime = 550;
-    rocketAmmo = 2;
-    shootType = 1;
-    shootDelay = 25;
+    if (rocketType == 1) {
+      rocketAmmo = 2;
+    } else if (rocketType == 2) {
+      rocketAmmo = 3;
+    }
 
+    shootType = 1;
 
     base = loadImage("TankBase.png");
     turret = loadImage("TankTurret.png");
@@ -42,14 +53,12 @@ class Tank {
   void display() {
     imageMode(CENTER);
 
-
     pushMatrix();
     translate(x, y);
 
     // Base
     rotate(angle - HALF_PI);
     image(base, 0, 0);
-
 
     // Turret
     pushMatrix();
@@ -72,89 +81,83 @@ class Tank {
     if (health < 1350) {
       healDelay = 450;
       healDelay -= 1;
-    } 
+    }
 
     if (healDelay < 1) {
       healDelay = 0;
-    } 
+    }
 
     if (health > 0) {
       if (health > 1350) {
         health = 1350;
       }
 
-      if (shootDelay < 1) {
-        shootDelay = 0;
-      } else {
-        shootDelay -= 1;
-      }
-      
       if (movingForward || movingBackward || movingLeft || movingRight == true) {
         // move.play();
       } else {
         // idle.play();
       }
-      
+
       // Movement
-      if (TankGame.legacyMovement == true) {
-      if (movingForward) {
-        y -= speed;
-        angle = -HALF_PI;
-      }
-      if (movingBackward) {
-        y += speed;
-        angle = HALF_PI;
-      }
-      if (movingLeft) {
-        x -= speed;
-        angle = PI;
-      }
-      if (movingRight) {
-        x += speed;
-        angle = 0;
-      }
+      if (legacyMovement == true) {
+        if (movingForward) {
+          y -= speed;
+          angle = -HALF_PI;
+        }
+        if (movingBackward) {
+          y += speed;
+          angle = HALF_PI;
+        }
+        if (movingLeft) {
+          x -= speed;
+          angle = PI;
+        }
+        if (movingRight) {
+          x += speed;
+          angle = 0;
+        }
 
-      if (movingForward == true && movingRight == true) {
-        angle = -HALF_PI/2;
-        speed /= 2;
-      }
-      if (movingForward == true && movingLeft == true) {
-        angle = -10200;
-        speed /= 2;
-      }
-      if (movingBackward == true && movingRight == true) {
-        angle = HALF_PI/2;
-        speed /= 2;
-      }
-      if (movingBackward == true && movingLeft == true) {
-        angle = 10200;
-        speed /= 2;
-      }
+        if (movingForward == true && movingRight == true) {
+          angle = -HALF_PI/2;
+          speed /= 2;
+        }
+        if (movingForward == true && movingLeft == true) {
+          angle = -10200;
+          speed /= 2;
+        }
+        if (movingBackward == true && movingRight == true) {
+          angle = HALF_PI/2;
+          speed /= 2;
+        }
+        if (movingBackward == true && movingLeft == true) {
+          angle = 10200;
+          speed /= 2;
+        }
 
-      // Movement debuggers
-      if (movingForward == true && movingRight == true && movingLeft == true) {
-        angle = -HALF_PI;
-      }
-      if (movingBackward == true && movingRight == true && movingLeft == true) {
-        angle = HALF_PI;
-      }
+        // Movement debuggers
+        if (movingForward == true && movingRight == true && movingLeft == true) {
+          angle = -HALF_PI;
+        }
+        if (movingBackward == true && movingRight == true && movingLeft == true) {
+          angle = HALF_PI;
+        }
 
-      if (movingBackward == true && movingLeft == true && movingForward == true && movingRight == true) {
-        speed = 0;
+        if (movingBackward == true && movingLeft == true && movingForward == true && movingRight == true) {
+          speed = 0;
+        } else {
+          speed = 3;
+        }
       } else {
-        speed = 3;
-      }
-      } else {
-      if (movingForward) {
-        x += cos(angle) * speed;
-        y += sin(angle) * speed;
-      }
-      if (movingBackward) {
-        x -= cos(angle) * speed;
-        y -= sin(angle) * speed;
-      }
-      if (turningLeft) angle -= rotationSpeed;
-      if (turningRight) angle += rotationSpeed;
+        if (movingForward) {
+          x += cos(angle) * speed;
+          y += sin(angle) * speed;
+        }
+        if (movingBackward) {
+          x -= cos(angle) * speed;
+          y -= sin(angle) * speed;
+        }
+        if (turningLeft) angle -= rotationSpeed;
+        if (turningRight) angle += rotationSpeed;
       }
 
 
@@ -169,15 +172,6 @@ class Tank {
       x = constrain(x, 0, width);
       y = constrain(y, 0, height);
 
-      if (ammo < ammo - 1) {
-        shootDelay = 25;
-        shootDelay -= 1;
-      }
-
-      if (shootDelay < 1) {
-        shootDelay = 0;
-      }
-      
       // reload
       if (ammo == 0) {
         BulletReloadTime -= 1;
@@ -203,15 +197,13 @@ class Tank {
 
   void shoot() {
     if (shootType == 1) {
-      if (shootDelay < 1) {
-        if (ammo > 1) {
-          ammo -= 1;
-          println("Player Shot Bullet | Ammo left: " + ammo);
-          shootDelay = 25;
-        } else {
-          println("No Bullets left | Player Reloading Bullets...");
-          ammo = 0;
-        }
+      if (ammo > 1) {
+        ammo -= 1;
+        println("Player Shot Bullet | Ammo left: " + ammo);
+        shootDelay = 25;
+      } else {
+        println("No Bullets left | Player Reloading Bullets...");
+        ammo = 0;
       }
     }
     if (shootType == 2) {
