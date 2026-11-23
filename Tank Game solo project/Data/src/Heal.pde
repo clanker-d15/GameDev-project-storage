@@ -5,7 +5,7 @@ class Heal {
   void setup() {
     x = int(random(50, 850));
     y = int(random(50, 850));
-    healAmount = 450;
+    healAmount = 500;
     healthImage = loadImage("Heal_Icon.png");
     counter = 1500;
   }
