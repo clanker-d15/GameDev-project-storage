@@ -13,11 +13,12 @@ class LightEnemy {
     x = width/2;
     y = y + 100;
     health = 475;
-    damage = 7;
+    damage = 8;
     speed = 5;
-    ammo = 50;
+    ammo = 25;
     reload = 300;
     shootDelay = 20;
+    burstDelay = 70;
     angle = HALF_PI;
     turretAngle = -HALF_PI;
 
@@ -119,7 +120,7 @@ class LightEnemy {
 
     if (reload < 0) {
       reload = 300;
-      ammo = 50;
+      ammo = 25;
       println("Light enemy reloaded | Light enemy ammo left: " + ammo);
     }
   }
