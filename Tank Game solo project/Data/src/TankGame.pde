@@ -51,7 +51,10 @@ void setup() {
   //plaza = loadImage("");
   //city1Icon = loadImage("");
   //city1 = loadImage("");
+  //city2Icon = loadImage("");
+  //city2 = loadImage("");
   //menuSmokeTest = loadImage("");
+
   //defaultBullet = loadImage("");
   //armorBullet = loadImage("");
   //normalRocket = loadImage("");
@@ -237,7 +240,7 @@ void mousePressed() {
         }
       }
     } else {
-      // Menu navigation and settings clicks
+      // Menu screen switchers
       if (menuScreen == 1) {
         if (mouseX > 198 && mouseX < 338 && mouseY > 768 && mouseY < 811) {
           menuScreen = 2;
