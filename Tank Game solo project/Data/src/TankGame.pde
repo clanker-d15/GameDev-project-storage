@@ -10,7 +10,7 @@ Heal healthPack;
 import processing.sound.*;
 SoundFile shoot1, shoot2, shoot3, idle, move;
 
-PImage mouse, reloadMouse, plazaIcon, plaza, city1Icon, city1, menuSmokeTest;
+PImage mouse, reloadMouse, defaultBullet, armorBullet, normalRocket, guidedRocket, defaultArmor, explosiveArmor, heavyArmor, plazaIcon, plaza, city1Icon, city1, menuSmokeTest;
 int tankOffScreen, ax, ay, detailLevel, menuScreen, bulletType, rocketType, armorType, map;
 boolean play, pause, legacyMovement, particles, sound;
 
@@ -34,6 +34,13 @@ void setup() {
   city1Icon = loadImage("");
   city1 = loadImage("");
   menuSmokeTest = loadImage("");
+  defaultBullet = loadImage("");
+  armorBullet = loadImage("");
+  normalRocket = loadImage("");
+  guidedRocket = loadImage("");
+  defaultArmor = loadImage("");
+  explosiveArmor = loadImage("");
+  heavyArmor = loadImage("");
   H_enemies.add(new HeavyEnemy(int(random(width)), -60));
   L_enemies.add(new LightEnemy(int(random(width)), -60));
   play = false;
@@ -441,6 +448,12 @@ void startScreen() {
   if (mouseX > 825 && mouseX < 900 && mouseY > 860 && mouseY < 900) {
     text("Heavy armor plating with great stopping power. /nSacrifices speed for great overall protection. /nHas a longer time stopping and going.", 350, 820);
   }
+
+  //image();
+  //image();
+  //image();
+  //image();
+  //image();
 
   //image(plazaIcon, 300, 400);
   //image(city1Icon, 500, 400);
