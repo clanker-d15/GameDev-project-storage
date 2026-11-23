@@ -240,7 +240,7 @@ void mousePressed() {
         }
       }
     } else {
-      // Menu screen switchers
+      // Menu screen buttons
       if (menuScreen == 1) {
         if (mouseX > 198 && mouseX < 338 && mouseY > 768 && mouseY < 811) {
           menuScreen = 2;
@@ -251,7 +251,33 @@ void mousePressed() {
         if (mouseX > 198 && mouseX < 323 && mouseY > 863 && mouseY < 903) {
           menuScreen = 4;
         }
+
+        // Tank Specs buttons
+        if (mouseX > 645 && mouseX < 720 && mouseY > 753 && mouseY < 778) {
+          bulletType = 1;
+        } 
+        if (mouseX > 735 && mouseX < 810 && mouseY > 753 && mouseY < 778) {
+          bulletType = 2;
+        }
+
+        if (mouseX > 645 && mouseX < 720 && mouseY > 805 && mouseY < 830) {
+          rocketType = 1;
+        }
+        if (mouseX > 735 && mouseX < 810 && mouseY > 805 && mouseY < 830) {
+          rocketType = 2;
+        }
+
+        if (mouseX > 645 && mouseX < 720 && mouseY > 860 && mouseY < 900) {
+          armorType = 1;
+        }
+        if (mouseX > 735 && mouseX < 810 && mouseY > 860 && mouseY < 900) {
+          armorType = 2;
+        }
+        if (mouseX > 825 && mouseX < 900 && mouseY > 860 && mouseY < 900) {
+          armorType = 3;
+        }
       } else if (menuScreen == 2) {
+        // Settings Buttons
         if (mouseX > 200 && mouseX < 400 && mouseY > 240 && mouseY < 270) {
           legacyMovement = !legacyMovement;
         }
