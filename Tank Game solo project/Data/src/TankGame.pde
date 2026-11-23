@@ -529,7 +529,7 @@ void creditsScreen() {
 
   textSize(30);
   text("-Complexity", 220, 270);
-  text("-Battlefield 3 and Battlefield 6", 220, 365);
+  text("-Battlefield 6", 220, 365);
   text("YouTube - Complexity_628", 220, 460);
   text("Twitter - Complexity_ (Or @P0tat0pratguy)", 220, 530);
 
