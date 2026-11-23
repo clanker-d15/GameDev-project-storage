@@ -2,7 +2,7 @@ class Tank {
   // Member Variables
   int x, y, health, speed, healDelay, ammo, BulletReloadTime, RocketReloadTime, rocketAmmo, shootType, shootDelay;
 
-  float angle, turretAngle, rotationSpeed;
+  float angle, turretAngle, rotationSpeed, armorProctection;
 
   PImage base, turret;
 
@@ -24,12 +24,15 @@ class Tank {
     if (armorType == 1) {
       health = 1200;
       speed = 3;
+      armorProctection = 1;
     } else if (armorType == 2) {
       health = 925;
       speed = 4;
+      armorProctection = 0.65;
     } else if (armorType == 3) {
       health = 1750;
       speed = 2;
+      armorProctection = 1.55;
     }
     rotationSpeed = 0.03;
     angle = -HALF_PI;
