@@ -10,7 +10,7 @@ Heal healthPack;
 import processing.sound.*;
 SoundFile shoot1, shoot2, shoot3, idle, move;
 
-PImage mouse, reloadMouse, defaultBullet, armorBullet, normalRocket, guidedRocket, defaultArmor, explosiveArmor, heavyArmor, plazaIcon, plaza, city1Icon, city1, menuSmokeTest;
+PImage mouse, reloadMouse, defaultBullet, armorBullet, normalRocket, guidedRocket, defaultArmor, explosiveArmor, heavyArmor, plazaIcon, plaza, city1Icon, city1, city2Icon, city2, menuSmokeTest;
 int tankOffScreen, ax, ay, detailLevel, menuScreen, bulletType, rocketType, armorType, map;
 boolean play, pause, legacyMovement, particles, sound;
 
