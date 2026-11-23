@@ -417,6 +417,22 @@ void startScreen() {
     text("Heavy", 775, 855);
   }
 
+  textSize(20);
+  if (mouseX > 645 && mouseX < 720 && mouseY > 753 && mouseY < 778) {
+    text("Light all purpose explosive rounds. /nCarries more shots per load and shoots faster.", 350, 820);
+  }
+  if (mouseX > 735 && mouseX < 810 && mouseY > 753 && mouseY < 778) {
+    text("Heavier rounds specifically for vehicle armor. /nCarries less shots and shoots slower.", 350, 820);
+  }
+
+  if (mouseX > 645 && mouseX < 720 && mouseY > 805 && mouseY < 830) {
+    text("Fast unguided rockets with high explosive power. /nCarry 2 rockets total.", 350, 820);
+  }
+  if (mouseX > 735 && mouseX < 810 && mouseY > 805 && mouseY < 830) {
+    text("Slower crosshair guided rockets with less explosive power. /nCarry more rockets than standard unguided but slower reload.", 350, 820);
+  }
+
+
   //image(plazaIcon, 300, 400);
   //image(city1Icon, 500, 400);
 }
