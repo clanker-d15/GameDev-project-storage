@@ -27,22 +27,9 @@ void setup() {
   player = new Tank();
   H_enemy = new HeavyEnemy(0, 0);
   healthPack = new Heal();
-  mouse = loadImage("crossHair.png");
-  reloadMouse = loadImage("ReloadCrosshair.png");
-  plazaIcon = loadImage("");
-  plaza = loadImage("");
-  city1Icon = loadImage("");
-  city1 = loadImage("");
-  menuSmokeTest = loadImage("");
-  defaultBullet = loadImage("");
-  armorBullet = loadImage("");
-  normalRocket = loadImage("");
-  guidedRocket = loadImage("");
-  defaultArmor = loadImage("");
-  explosiveArmor = loadImage("");
-  heavyArmor = loadImage("");
   H_enemies.add(new HeavyEnemy(int(random(width)), -60));
   L_enemies.add(new LightEnemy(int(random(width)), -60));
+
   play = false;
   pause = false;
   legacyMovement = false;
@@ -58,15 +45,37 @@ void setup() {
   ax = mouseX + 15;
   ay = mouseY + 15;
 
-  shoot1 = new SoundFile(this, "");
-  shoot2 = new SoundFile(this, "");
-  shoot3 = new SoundFile(this, "");
-  idle = new SoundFile(this, "");
-  move = new SoundFile(this, "");
+  mouse = loadImage("crossHair.png");
+  reloadMouse = loadImage("ReloadCrosshair.png");
+  //plazaIcon = loadImage("");
+  //plaza = loadImage("");
+  //city1Icon = loadImage("");
+  //city1 = loadImage("");
+  //menuSmokeTest = loadImage("");
+  //defaultBullet = loadImage("");
+  //armorBullet = loadImage("");
+  //normalRocket = loadImage("");
+  //guidedRocket = loadImage("");
+  //defaultArmor = loadImage("");
+  //explosiveArmor = loadImage("");
+  //heavyArmor = loadImage("");
+
+  //shoot1 = new SoundFile(this, "");
+  //shoot2 = new SoundFile(this, "");
+  //shoot3 = new SoundFile(this, "");
+  //idle = new SoundFile(this, "");
+  //move = new SoundFile(this, "");
 
   //particleSample = new Movie(this, "");
   //legacyMovementSample = new Movie(this, "");
   //detailsSample = new Movie(this, "");
+  //normalBulletSample = new Movie(this, "");
+  //armorBulletSample = new Movie(this, "");
+  //normalRocketSample = new Movie(this, "");
+  //guidedRocketSample = new Movie(this, "");
+  //defaultArmorSample = new Movie(this, "");
+  //explosiveArmorSample = new Movie(this, "");
+  //heavyArmorSample = new Movie(this, "");
 }
 
 void draw() {
@@ -97,6 +106,10 @@ void draw() {
       //image(plaza, 0, 0);
     } else if (map == 2) {
       //image(city1, 0, 0);
+    } else if (map == 3) {
+      //image(city2, 0, 0);
+    } else if (map == 4) {
+      //image();
     }
 
     // add enemies and health packs
@@ -448,18 +461,18 @@ void startScreen() {
     text("Heavy armor plating with great stopping power. /nSacrifices speed for great overall protection. /nHas a longer time stopping and going.", 350, 820);
   }
 
-  //image();
-  //image();
-  //image();
-  //image();
-  //image();
+  //image(normalBullet, 0, 0);
+  //image(armorBullet, 0, 0);
+  //image(normalRocket, 0, 0);
+  //image(guidedRocket, 0, 0);
+  //image(defaultArmor, 0, 0);
+  //image(explosiveArmor, 0, 0);
+  //image(heavyArmor, 0, 0);
 
   //image(plazaIcon, 300, 400);
   //image(city1Icon, 500, 400);
   //image
   //image
-
-  
 }
 
 void settingsScreen() {
