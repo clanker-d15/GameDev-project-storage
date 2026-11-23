@@ -26,7 +26,7 @@ class Tank {
       speed = 3;
     } else if (armorType == 2) {
       health = 925;
-      speed = 3;
+      speed = 4;
     } else if (armorType == 3) {
       health = 1750;
       speed = 2;
