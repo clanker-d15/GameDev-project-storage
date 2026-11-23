@@ -21,9 +21,17 @@ class Tank {
   Tank() {
     x = width/2;
     y = 850;
-    health = 1350;
+    if (armorType == 1) {
+      health = 1200;
+      speed = 3;
+    } else if (armorType == 2) {
+      health = 925;
+      speed = 3;
+    } else if (armorType == 3) {
+      health = 1750;
+      speed = 2;
+    }
     rotationSpeed = 0.03;
-    speed = 3;
     angle = -HALF_PI;
     healDelay = 450;
     turretAngle = HALF_PI;
