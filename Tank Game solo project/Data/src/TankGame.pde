@@ -278,7 +278,6 @@ void mouseWheel (MouseEvent event) {
   }
 }
 
-// Movement
 void keyPressed() {
   if (play == false) {
     if (menuScreen == 1) {
