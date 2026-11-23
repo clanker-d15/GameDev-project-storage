@@ -39,17 +39,19 @@ class Tank {
     if (bulletType == 1) {
       ammo = 12;
       shootDelay = 20;
+      BulletReloadTime = 200;
     } else if (bulletType == 2) {
       ammo = 6;
       shootDelay = 40;
+      BulletReloadTime = 275;
     }
 
-    BulletReloadTime = 200;
-    RocketReloadTime = 550;
     if (rocketType == 1) {
       rocketAmmo = 2;
+      RocketReloadTime = 475;
     } else if (rocketType == 2) {
       rocketAmmo = 3;
+      RocketReloadTime = 550;
     }
 
     shootType = 1;
