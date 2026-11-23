@@ -525,7 +525,7 @@ void settingsScreen() {
 
   textSize(20);
   if (mouseX > 200 && mouseX < 400 && mouseY > 240 && mouseY < 270) {
-    text("Legacy movement is a simpler version of movement.\nThis movement was used for the prototype of this game.\nApplies to the enemies movement too", 430, 320);
+    text("Legacy movement is a simpler version of movement.\nThis movement was used for the prototype of this game.\nApplies to enemy's movement too", 430, 320);
   }
 
   if (mouseX > 200 && mouseX < 300 && mouseY > 280 && mouseY < 310) {
