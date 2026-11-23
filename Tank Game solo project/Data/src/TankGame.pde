@@ -5,7 +5,7 @@ LightEnemy L_enemy;
 Heal healthPack;
 
 //import processing.video.*;
-//Movie particleSample, legacyMovementSample, detailsSample;
+//Movie particleSample, legacyMovementSample, detailsSample, normalBulletSample, armorBulletSample, normalRocketSample, guidedRocketSample, DefaultArmorSample, explosiveArmorSample, heavyArmorSample;
 
 import processing.sound.*;
 SoundFile shoot1, shoot2, shoot3, idle, move;
