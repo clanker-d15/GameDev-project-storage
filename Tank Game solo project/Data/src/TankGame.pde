@@ -432,9 +432,22 @@ void startScreen() {
     text("Slower crosshair guided rockets with less explosive power. /nCarry more rockets than standard unguided but slower reload.", 350, 820);
   }
 
+  if (mouseX > 645 && mouseX < 720 && mouseY > 860 && mouseY < 900) {
+    text("Standard issue armor plating with acceptable stopping power. /nAllows for decent speed while providing equally decent protection.", 350, 820);
+  }
+  if (mouseX > 735 && mouseX < 810 && mouseY > 860 && mouseY < 900) {
+    text("Thin armor plating with explosive padded plates to stop anything. /nAllows for high speed while sacrificing proctection. /nPlating wears out, stopping less and less damage for every projectile taken.", 350, 820);
+  }
+  if (mouseX > 825 && mouseX < 900 && mouseY > 860 && mouseY < 900) {
+    text("Heavy armor plating with great stopping power. /nSacrifices speed for great overall protection. /nHas a longer time stopping and going.", 350, 820);
+  }
 
   //image(plazaIcon, 300, 400);
   //image(city1Icon, 500, 400);
+  //image
+  //image
+
+  
 }
 
 void settingsScreen() {
