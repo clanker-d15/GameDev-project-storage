@@ -7,14 +7,9 @@ class Rocket {
     this.y = y;
     w = 7;
     h = 20;
+    speed = 20;
     angle = player.turretAngle;
-    if (rocketType == 1) {
-      rocketDamage = 250;
-      speed = 21;
-    } else if (rocketType == 2) {
-      rocketDamage = 225;
-      speed = 18;
-    }
+    rocketDamage = 250;
 
     rocket = loadImage("Rocket.png");
   }
