@@ -4,7 +4,7 @@ enum State {
 
 class Barrier {
   int x, y, w, h, wallType, health;
-  PImage thinWall, basicWall, toughWall;
+  PImage thinWall, basicWall, toughWall, invincibleWall;
   boolean Collision;
 
   void setup() {
@@ -13,12 +13,13 @@ class Barrier {
     w = int(random(5, 30));
     h = int(random(45, 125));
 
-    wallType = int(random(0, 3));
+    wallType = int(random(0, 4));
     health = 0;
 
-    //thinWall = loadImage("");
-    //basicWall = loadImage("");
-    //toughWall = loadImage("");
+    thinWall = loadImage("");
+    basicWall = loadImage("");
+    toughWall = loadImage("");
+    invincibleWall = loadImage("");
   }
 
   void draw() {
@@ -34,18 +35,21 @@ class Barrier {
     //  image(toughWall, x, y, w, h);
     //  health = 600;
     //}
+    //if (wallType == 4) {
+    //  image(invincibleWall, x, y, w, h);
+    //  health = 2147483646;
+    //}
   }
 
   void update() {
 
     if (wallType == 1) {
-      
     }
     if (wallType == 2) {
-      
     }
     if (wallType == 3) {
-      
+    }
+    if (wallType == 4) {
     }
   }
 
