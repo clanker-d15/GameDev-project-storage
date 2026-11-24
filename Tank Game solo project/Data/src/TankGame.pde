@@ -388,16 +388,16 @@ void infoPanel() {
 
   fill(255);
   textSize(25);
-  text("Health: " + player.health, 75, 860);
+  text("Health: " + player.health, 75, 855);
   if (player.ammo > 0) {
-    text("Ammo: " + player.ammo, 65, 880);
+    text("Ammo: " + player.ammo, 65, 875);
   } else {
-    text("Reloading...", 72, 880);
+    text("Reloading...", 72, 875);
   }
   if (player.rocketAmmo > 0) {
-    text("Rockets: " + player.rocketAmmo, 65, 900);
+    text("Rockets: " + player.rocketAmmo, 65, 895);
   } else {
-    text("Reloading...", 72, 900);
+    text("Reloading...", 72, 895);
   }
 }
 
@@ -467,27 +467,27 @@ void startScreen() {
 
   textSize(18);
   if (mouseX > 645 && mouseX < 720 && mouseY > 753 && mouseY < 778) {
-    text("Light all purpose explosive rounds. Carries more shots per \nload and shoots faster.", 180, 850);
+    text("Light all purpose explosive rounds. Carries more shots per \nload and shoots faster.", 180, 830);
   }
   if (mouseX > 735 && mouseX < 810 && mouseY > 753 && mouseY < 778) {
-    text("Heavier rounds specifically for vehicle armor. Carries less \nshots and shoots slower.", 180, 850);
+    text("Heavier rounds specifically for vehicle armor. Carries less \nshots and shoots slower.", 180, 830);
   }
 
   if (mouseX > 645 && mouseX < 720 && mouseY > 805 && mouseY < 830) {
-    text("Fast unguided rockets with high explosive power. \nCarry 2 rockets total.", 180, 850);
+    text("Fast unguided rockets with high explosive power. \nCarry 2 rockets total.", 180, 830);
   }
   if (mouseX > 735 && mouseX < 810 && mouseY > 805 && mouseY < 830) {
-    text("Slower crosshair guided rockets with less explosive power. \nCarry more rockets than standard unguided but slower \nreload.", 180, 850);
+    text("Slower crosshair guided rockets with less explosive power. \nCarry more rockets than standard unguided but slower \nreload.", 180, 830);
   }
 
   if (mouseX > 645 && mouseX < 720 && mouseY > 860 && mouseY < 900) {
-    text("Standard issue armor plating with acceptable stopping \npower. Allows for decent speed while providing equally \ndecent protection.", 180, 850);
+    text("Standard issue armor plating with acceptable stopping \npower. Allows for decent speed while providing equally \ndecent protection.", 180, 830);
   }
   if (mouseX > 735 && mouseX < 810 && mouseY > 860 && mouseY < 900) {
-    text("Thin armor plating with explosive padded plates to \nstop anything. Allows for high speed while sacrificing \nproctection. Plating wears out, stopping less and less \ndamage for every projectile taken.", 180, 850);
+    text("Thin armor plating with explosive padded plates to \nstop anything. Allows for high speed while sacrificing \nproctection. Plating wears out, stopping less and less \ndamage for every projectile taken.", 180, 830);
   }
   if (mouseX > 825 && mouseX < 900 && mouseY > 860 && mouseY < 900) {
-    text("Heavy armor plating with great stopping power. Sacrifices \nspeed for great overall protection. Has a longer time \nstopping and going.", 180, 850);
+    text("Heavy armor plating with great stopping power. Sacrifices \nspeed for great overall protection. Has a longer time \nstopping and going.", 180, 830);
   }
 
   //image(normalBullet, 0, 0);
