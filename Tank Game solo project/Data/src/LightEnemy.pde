@@ -1,6 +1,6 @@
 class LightEnemy {
   int x, y, health, damage, speed, reload, shootDelay, ammo;
-  float angle, turretAngle;
+  float angle, turretAngle, burstDelay;
   PImage base, turret;
 
   boolean movingForward = false;
@@ -56,7 +56,6 @@ class LightEnemy {
     }
 
     if (health < 240) {
-
     }
 
     if (health > 0) {
@@ -136,38 +135,15 @@ class LightEnemy {
   }
 
   void wander() {
-    if (random(1) < 0.01) {
-      angle += random(-PI/4, PI/4);
-      movingForward = true;
-    }
   }
 
   void chase() {
-    int dx = (abs(player.x - x));
-    int dy = (abs(player.y - y));
-    if (dx > dy) {
-      if (x<player.x) {
-        x +=speed ;
-        
-      } else {
-        x -= speed;
-      }
-    }
-    else {
-      if (y<player.y) {
-        y +=speed ;
-      } else {
-        y -= speed;
-      }
-    }
   }
 
   void fallBack() {
-    
   }
 
   void deathAnim() {
-    
   }
 
   boolean isHit() {
