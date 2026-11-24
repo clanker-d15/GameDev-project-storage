@@ -1,8 +1,8 @@
 class Tank {
   // Member Variables
-  int x, y, health, speed, healDelay, ammo, BulletReloadTime, RocketReloadTime, rocketAmmo, shootType, shootDelay;
+  int health, speed, maxSpeed, healDelay, ammo, BulletReloadTime, RocketReloadTime, rocketAmmo, shootType, shootDelay;
 
-  float angle, turretAngle, rotationSpeed, armorProtection;
+  float x, y, vx, vy, angle, turretAngle, rotationSpeed, armorProtection, accel, friction;
 
   PImage base, turret;
 
@@ -23,19 +23,24 @@ class Tank {
   Tank() {
     x = width/2;
     y = 850;
+    vx = 0;
+    vy = 0;
     rotationSpeed = 0.03;
     angle = -HALF_PI;
     healDelay = 450;
     turretAngle = HALF_PI;
     shootType = 1;
     ammo = 12;
-    speed = 3;
+    maxSpeed = 3;
     health = 1200;
     armorProtection = 1;
     BulletReloadTime = 200;
     shootDelay = 40;
     RocketReloadTime = 475;
     rocketAmmo = 2;
+    accel = 0.4;
+    friction = 0.94;
+    speed = 0;
 
     base = loadImage("TankBase.png");
     turret = loadImage("TankTurret.png");
@@ -43,19 +48,26 @@ class Tank {
 
   void display() {
     imageMode(CENTER);
+    noCursor();
 
     //if (armorType == 1) {
     //  health = 1200;
-    //  speed = 3;
+    //  maxSpeed = 3;
     //  armorProtection = 1;
+    //  accel = 0.4;
+    //  friction = 0.94;
     //} else if (armorType == 2) {
     //  health = 925;
-    //  speed = 4;
+    //  maxSpeed = 4;
     //  armorProtection = 0.65;
+    //  accel = 0.5;
+    //  friction = 0.92;
     //} else if (armorType == 3) {
     //  health = 1750;
-    //  speed = 2;
+    //  maxSpeed = 2;
     //  armorProtection = 1.55;
+    //  accel = 0.35;
+    //  friction = 0.96;
     //}
 
     //if (bulletType == 1) {
@@ -124,37 +136,37 @@ class Tank {
       // Movement
       if (legacyMovement == true) {
         if (movingForward) {
-          y -= speed;
+          y -= maxSpeed;
           angle = -HALF_PI;
         }
         if (movingBackward) {
-          y += speed;
+          y += maxSpeed;
           angle = HALF_PI;
         }
         if (movingLeft) {
-          x -= speed;
+          x -= maxSpeed;
           angle = PI;
         }
         if (movingRight) {
-          x += speed;
+          x += maxSpeed;
           angle = 0;
         }
 
         if (movingForward == true && movingRight == true) {
           angle = -HALF_PI/2;
-          speed /= 2;
+          maxSpeed /= 2;
         }
         if (movingForward == true && movingLeft == true) {
           angle = -10200;
-          speed /= 2;
+          maxSpeed /= 2;
         }
         if (movingBackward == true && movingRight == true) {
           angle = HALF_PI/2;
-          speed /= 2;
+          maxSpeed /= 2;
         }
         if (movingBackward == true && movingLeft == true) {
           angle = 10200;
-          speed /= 2;
+          maxSpeed /= 2;
         }
 
         // Movement debuggers
@@ -166,23 +178,36 @@ class Tank {
         }
 
         if (movingBackward == true && movingLeft == true && movingForward == true && movingRight == true) {
-          speed = 0;
+          maxSpeed = 0;
         } else {
-          speed = 3;
+          maxSpeed = 3;
         }
       } else {
         if (movingForward) {
-          x += cos(angle) * speed;
-          y += sin(angle) * speed;
+          vx += cos(angle) * accel;
+          vy += sin(angle) * accel;
         }
         if (movingBackward) {
-          x -= cos(angle) * speed;
-          y -= sin(angle) * speed;
+          vx -= cos(angle) * accel;
+          vy -= sin(angle) * accel;
         }
         if (turningLeft) angle -= rotationSpeed;
         if (turningRight) angle += rotationSpeed;
-      }
 
+        float currentSpeed = sqrt(vx * vx + vy * vy);
+        if (currentSpeed > maxSpeed) {
+          vx = (vx / currentSpeed) * maxSpeed;
+          vy = (vy / currentSpeed) * maxSpeed;
+        }
+
+        x += vx;
+        y += vy;
+        vx *= friction;
+        vy *= friction;
+
+        if (x < 0 || x > width) vx = 0;
+        if (y < 0 || y > height) vy = 0;
+      }
 
       // Turret rotation
       float targetAngle = atan2(mouseY - y, mouseX - x) - HALF_PI;
@@ -190,7 +215,7 @@ class Tank {
 
       while (diff < -PI) diff += TWO_PI;
       while (diff > PI) diff -= TWO_PI;
-      turretAngle += diff * 0.4;
+      turretAngle += diff * 0.25;
 
       x = constrain(x, 0, width);
       y = constrain(y, 0, height);
