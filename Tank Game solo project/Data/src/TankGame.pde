@@ -242,20 +242,20 @@ void mousePressed() {
     } else {
       // Menu screen buttons
       if (menuScreen == 1) {
-        if (mouseX > 198 && mouseX < 338 && mouseY > 768 && mouseY < 811) {
+        if (mouseX > 20 && mouseX < 160 && mouseY > 768 && mouseY < 811) {
           menuScreen = 2;
         }
-        if (mouseX > 198 && mouseX < 346 && mouseY > 817 && mouseY < 857) {
+        if (mouseX > 20 && mouseX < 168 && mouseY > 817 && mouseY < 857) {
           menuScreen = 3;
         }
-        if (mouseX > 198 && mouseX < 323 && mouseY > 863 && mouseY < 903) {
+        if (mouseX > 20 && mouseX < 145 && mouseY > 863 && mouseY < 903) {
           menuScreen = 4;
         }
 
         // Tank Specs buttons
         if (mouseX > 645 && mouseX < 720 && mouseY > 753 && mouseY < 778) {
           bulletType = 1;
-        } 
+        }
         if (mouseX > 735 && mouseX < 810 && mouseY > 753 && mouseY < 778) {
           bulletType = 2;
         }
@@ -410,9 +410,9 @@ void startScreen() {
 
   fill(100);
   //Screens buttons
-  rect(198, 768, 140, 43, 5);
-  rect(198, 817, 148, 40, 5);
-  rect(198, 863, 125, 40, 5);
+  rect(20, 768, 140, 43, 5);
+  rect(20, 817, 148, 40, 5);
+  rect(20, 863, 125, 40, 5);
 
   //Bullet buttons
   rect(645, 753, 75, 25, 5);
@@ -429,15 +429,15 @@ void startScreen() {
 
   fill(255);
   textSize(100);
-  text("Tank Game", 85, 205);
+  text("Tank Game", 85, 105);
 
   textSize(40);
-  text("Press ENTER to begin", 205, 245);
-  text("Settings", 200, 800);
-  text("Controls", 200, 850);
-  text("Credits", 200, 896);
+  text("Press ENTER to begin", 205, 145);
+  text("Settings", 21, 800);
+  text("Controls", 21, 850);
+  text("Credits", 21, 896);
   text("Tank Specs", 680, 700);
-  text("Maps:", 140, 315);
+  text("Maps:", 70, 200);
 
   textSize(25);
   text("Bullet Type:", 640, 745);
@@ -465,29 +465,29 @@ void startScreen() {
     text("Heavy", 775, 855);
   }
 
-  textSize(20);
+  textSize(18);
   if (mouseX > 645 && mouseX < 720 && mouseY > 753 && mouseY < 778) {
-    text("Light all purpose explosive rounds. /nCarries more shots per load and shoots faster.", 350, 820);
+    text("Light all purpose explosive rounds. Carries more shots per \nload and shoots faster.", 180, 850);
   }
   if (mouseX > 735 && mouseX < 810 && mouseY > 753 && mouseY < 778) {
-    text("Heavier rounds specifically for vehicle armor. /nCarries less shots and shoots slower.", 350, 820);
+    text("Heavier rounds specifically for vehicle armor. Carries less \nshots and shoots slower.", 180, 850);
   }
 
   if (mouseX > 645 && mouseX < 720 && mouseY > 805 && mouseY < 830) {
-    text("Fast unguided rockets with high explosive power. /nCarry 2 rockets total.", 350, 820);
+    text("Fast unguided rockets with high explosive power. \nCarry 2 rockets total.", 180, 850);
   }
   if (mouseX > 735 && mouseX < 810 && mouseY > 805 && mouseY < 830) {
-    text("Slower crosshair guided rockets with less explosive power. /nCarry more rockets than standard unguided but slower reload.", 350, 820);
+    text("Slower crosshair guided rockets with less explosive power. \nCarry more rockets than standard unguided but slower \nreload.", 180, 850);
   }
 
   if (mouseX > 645 && mouseX < 720 && mouseY > 860 && mouseY < 900) {
-    text("Standard issue armor plating with acceptable stopping power. /nAllows for decent speed while providing equally decent protection.", 350, 820);
+    text("Standard issue armor plating with acceptable stopping \npower. Allows for decent speed while providing equally \ndecent protection.", 180, 850);
   }
   if (mouseX > 735 && mouseX < 810 && mouseY > 860 && mouseY < 900) {
-    text("Thin armor plating with explosive padded plates to stop anything. /nAllows for high speed while sacrificing proctection. /nPlating wears out, stopping less and less damage for every projectile taken.", 350, 820);
+    text("Thin armor plating with explosive padded plates to \nstop anything. Allows for high speed while sacrificing \nproctection. Plating wears out, stopping less and less \ndamage for every projectile taken.", 180, 850);
   }
   if (mouseX > 825 && mouseX < 900 && mouseY > 860 && mouseY < 900) {
-    text("Heavy armor plating with great stopping power. /nSacrifices speed for great overall protection. /nHas a longer time stopping and going.", 350, 820);
+    text("Heavy armor plating with great stopping power. Sacrifices \nspeed for great overall protection. Has a longer time \nstopping and going.", 180, 850);
   }
 
   //image(normalBullet, 0, 0);
@@ -498,9 +498,9 @@ void startScreen() {
   //image(explosiveArmor, 0, 0);
   //image(heavyArmor, 0, 0);
 
-  //image(plazaIcon, 300, 400);
-  //image(city1Icon, 500, 400);
-  //image
+  //image(plazaIcon, 200, 400);
+  //image(city1Icon, 400, 400);
+  //image(city2Icon, 600, 400);
   //image
 }
 
