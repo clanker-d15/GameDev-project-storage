@@ -2,7 +2,7 @@ class Tank {
   // Member Variables
   int x, y, health, speed, healDelay, ammo, BulletReloadTime, RocketReloadTime, rocketAmmo, shootType, shootDelay;
 
-  float angle, turretAngle, rotationSpeed, armorProctection;
+  float angle, turretAngle, rotationSpeed, armorProtection;
 
   PImage base, turret;
 
@@ -23,43 +23,19 @@ class Tank {
   Tank() {
     x = width/2;
     y = 850;
-    if (armorType == 1) {
-      health = 1200;
-      speed = 3;
-      armorProctection = 1;
-    } else if (armorType == 2) {
-      health = 925;
-      speed = 4;
-      armorProctection = 0.65;
-    } else if (armorType == 3) {
-      health = 1750;
-      speed = 2;
-      armorProctection = 1.55;
-    }
     rotationSpeed = 0.03;
     angle = -HALF_PI;
     healDelay = 450;
     turretAngle = HALF_PI;
-
-    if (bulletType == 1) {
-      ammo = 12;
-      shootDelay = 20;
-      BulletReloadTime = 200;
-    } else if (bulletType == 2) {
-      ammo = 6;
-      shootDelay = 40;
-      BulletReloadTime = 275;
-    }
-
-    if (rocketType == 1) {
-      rocketAmmo = 2;
-      RocketReloadTime = 475;
-    } else if (rocketType == 2) {
-      rocketAmmo = 3;
-      RocketReloadTime = 550;
-    }
-
     shootType = 1;
+    ammo = 12;
+    speed = 3;
+    health = 1200;
+    armorProtection = 1;
+    BulletReloadTime = 200;
+    shootDelay = 40;
+    RocketReloadTime = 475;
+    rocketAmmo = 2;
 
     base = loadImage("TankBase.png");
     turret = loadImage("TankTurret.png");
@@ -67,6 +43,38 @@ class Tank {
 
   void display() {
     imageMode(CENTER);
+
+    //if (armorType == 1) {
+    //  health = 1200;
+    //  speed = 3;
+    //  armorProtection = 1;
+    //} else if (armorType == 2) {
+    //  health = 925;
+    //  speed = 4;
+    //  armorProtection = 0.65;
+    //} else if (armorType == 3) {
+    //  health = 1750;
+    //  speed = 2;
+    //  armorProtection = 1.55;
+    //}
+
+    //if (bulletType == 1) {
+    //  ammo = 12;
+    //  shootDelay = 20;
+    //  BulletReloadTime = 200;
+    //} else if (bulletType == 2) {
+    //  ammo = 6;
+    //  shootDelay = 40;
+    //  BulletReloadTime = 275;
+    //}
+
+    //if (rocketType == 1) {
+    //  rocketAmmo = 2;
+    //  RocketReloadTime = 475;
+    //} else if (rocketType == 2) {
+    //  rocketAmmo = 3;
+    //  RocketReloadTime = 550;
+    //}
 
     pushMatrix();
     translate(x, y);
