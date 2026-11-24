@@ -133,14 +133,16 @@ class HeavyEnemy {
   }
 
   void wander() {
-    
   }
 
-  void chase() {}
+  void chase() {
+  }
 
-  void fallBack() {}
+  void fallBack() {
+  }
 
-  void deathAnim() {}
+  void deathAnim() {
+  }
 
   boolean isHit() {
     return true;
