@@ -139,64 +139,8 @@ void draw() {
       }
     }
 
-    // Ammo counter next to crosshair
-    textAlign(CENTER, CENTER);
+    // Ammo thing on cursor
     rectMode(CENTER);
-    textSize(15);
-
-    if (player.shootType == 1) {
-      if (player.ammo > 0) {
-        if (mouseY < 25 || mouseX < 25) {
-          fill(190, 200);
-          rect(mouseX + 23, mouseY + 17, 22, 19, 25);
-          fill(0);
-          text(player.ammo, mouseX + 23, mouseY + 15);
-        } else {
-          fill(190, 200);
-          rect(mouseX - 23, mouseY - 20, 22, 19, 25);
-          fill(0);
-          text(player.ammo, mouseX - 23, mouseY - 22);
-        }
-      } else {
-        if (mouseY < 25 || mouseX < 70) {
-          fill(190, 200);
-          rect(mouseX + 50, mouseY + 23, 82, 19, 25);
-          fill(0);
-          text("Reloading...", mouseX + 50, mouseY + 21);
-        } else {
-          fill(190, 200);
-          rect(mouseX - 50, mouseY - 23, 82, 19, 25);
-          fill(0);
-          text("Reloading...", mouseX - 50, mouseY - 25);
-        }
-      }
-    }
-  } else if (player.shootType == 2) {
-    if (player.rocketAmmo > 0) {
-      if (mouseY < 25 || mouseX < 25) {
-        fill(190, 200);
-        rect(mouseX + 23, mouseY + 17, 22, 19, 25);
-        fill(0);
-        text(player.rocketAmmo, mouseX + 23, mouseY + 15);
-      } else {
-        fill(190, 200);
-        rect(mouseX - 23, mouseY - 20, 22, 19, 25);
-        fill(0);
-        text(player.rocketAmmo, mouseX - 23, mouseY - 22);
-      }
-    } else {
-      if (mouseY < 25 || mouseX < 70) {
-        fill(190, 200);
-        rect(mouseX + 50, mouseY + 23, 82, 19, 25);
-        fill(0);
-        text("Reloading...", mouseX + 50, mouseY + 21);
-      } else {
-        fill(190, 200);
-        rect(mouseX - 50, mouseY - 23, 82, 19, 25);
-        fill(0);
-        text("Reloading...", mouseX - 50, mouseY - 25);
-      }
-    }
   }
 
   // Bullet and Rocket activators
